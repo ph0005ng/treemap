@@ -1,0 +1,885 @@
+<<<<<<<=view-json=
+{
+  "id":"TreeMapErp",
+  "name":"TreeMapErp",
+  "category":"Chart",
+  "default":{
+    "jsonClass":"View",
+    "elxType":"View",
+    "vtype":"bundle",
+    "state":"visible",
+    "isContainer":false,
+    "position":{
+      "jsonClass":"Position",
+      "elxType":"Position",
+      "height":"420",
+      "width":"670",
+      "zIndex":"auto"
+    },
+    "data":{
+      "jsonClass":"DataEmbedded",
+      "datasource":{
+        "jsonClass":"DataSource",
+        "name":"initData",
+        "stype":"Data",
+        "desc":"default data",
+        "schema":{
+          "jsonClass":"Schema",
+          "caseSensitive":false,
+          "columns":[{
+            "jsonClass":"SchemaColumn",
+            "name":"Item_PK",
+            "dtype":"String",
+            "attrs":[{
+              "jsonClass":"PrimaryKey",
+              "name":"PrimaryKey"
+            }]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"Category",
+            "dtype":"String",
+            "attrs":[{
+              "jsonClass":"PrimaryKey",
+              "name":"PrimaryKey"
+            }]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"Level1",
+            "dtype":"String",
+            "attrs":[]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"Level2",
+            "dtype":"String",
+            "attrs":[]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"Level3",
+            "dtype":"String",
+            "attrs":[]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"Level4",
+            "dtype":"String",
+            "attrs":[]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"Level5",
+            "dtype":"String",
+            "attrs":[]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"Description",
+            "dtype":"String",
+            "attrs":[]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"SKU",
+            "dtype":"Double",
+            "attrs":[]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"Size",
+            "dtype":"Double",
+            "attrs":[]
+          }]
+        },
+        "data":{
+          "jsonClass":"DataRecords",
+          "records":[
+          {
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":1
+              },{
+              "jsonClass":"Field",
+            "value":"Watermelon"
+              },{
+              "jsonClass":"Field",
+            "value":"Fruits and veg"
+              },{
+              "jsonClass":"Field",
+            "value":"Thailand"
+              },{
+              "jsonClass":"Field",
+            "value":"Bangkok"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"Watermelon"
+              },{
+              "jsonClass":"Field",
+              "value":259
+              },{
+              "jsonClass":"Field",
+              "value":2000
+              }]
+            },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":2
+              },{
+              "jsonClass":"Field",
+            "value":"Apple"
+              },{
+              "jsonClass":"Field",
+            "value":"Fruits and veg"
+              },{
+              "jsonClass":"Field",
+            "value":"Thailand"
+              },{
+              "jsonClass":"Field",
+            "value":"Pattaya"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"Apple"
+              },{
+              "jsonClass":"Field",
+              "value":375
+              },{
+              "jsonClass":"Field",
+              "value":25000
+              }]
+            },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":3
+              },{
+              "jsonClass":"Field",
+            "value":"Onion"
+              },{
+              "jsonClass":"Field",
+            "value":"Fruits and veg"
+              },{
+              "jsonClass":"Field",
+            "value":"Malaysia"
+              },{
+              "jsonClass":"Field",
+            "value":"Johor"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"Onion"
+              },{
+              "jsonClass":"Field",
+              "value":894
+              },{
+              "jsonClass":"Field",
+              "value":10500
+              }]
+            },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":4
+              },{
+              "jsonClass":"Field",
+            "value":"Carrot"
+              },{
+              "jsonClass":"Field",
+            "value":"Fruits and veg"
+              },{
+              "jsonClass":"Field",
+            "value":"Malaysia"
+              },{
+              "jsonClass":"Field",
+            "value":"Johor"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"Carrot"
+              },{
+              "jsonClass":"Field",
+              "value":417
+              },{
+              "jsonClass":"Field",
+              "value":20410
+              }]
+            },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":5
+              },{
+              "jsonClass":"Field",
+            "value":"Pear"
+              },{
+              "jsonClass":"Field",
+            "value":"Fruits and veg"
+              },{
+              "jsonClass":"Field",
+            "value":"Malaysia"
+              },{
+              "jsonClass":"Field",
+            "value":"Pahang"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"Pear"
+              },{
+              "jsonClass":"Field",
+              "value":657
+              },{
+              "jsonClass":"Field",
+              "value":6800
+              }]
+            },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":6
+              },{
+              "jsonClass":"Field",
+            "value":"Keyboard"
+              },{
+              "jsonClass":"Field",
+            "value":"Electronics"
+              },{
+              "jsonClass":"Field",
+            "value":"Japan"
+              },{
+              "jsonClass":"Field",
+            "value":"Tokyo"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"Keyboard"
+              },{
+              "jsonClass":"Field",
+              "value":517
+              },{
+              "jsonClass":"Field",
+              "value":7800
+              }]
+            },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":7
+              },{
+              "jsonClass":"Field",
+            "value":"Mouse"
+              },{
+              "jsonClass":"Field",
+            "value":"Electronics"
+              },{
+              "jsonClass":"Field",
+            "value":"Japan"
+              },{
+              "jsonClass":"Field",
+            "value":"Osaka"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"Mouse"
+              },{
+              "jsonClass":"Field",
+              "value":789
+              },{
+              "jsonClass":"Field",
+              "value":1800
+              }]
+            },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":8
+              },{
+              "jsonClass":"Field",
+            "value":"Desktop"
+              },{
+              "jsonClass":"Field",
+            "value":"Electronics"
+              },{
+              "jsonClass":"Field",
+            "value":"USA"
+              },{
+              "jsonClass":"Field",
+            "value":"Miami"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"Desktop"
+              },{
+              "jsonClass":"Field",
+              "value":841
+              },{
+              "jsonClass":"Field",
+              "value":3570
+              }]
+            },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":9
+              },{
+              "jsonClass":"Field",
+            "value":"Laptop"
+              },{
+              "jsonClass":"Field",
+            "value":"Electronics"
+              },{
+              "jsonClass":"Field",
+            "value":"USA"
+              },{
+              "jsonClass":"Field",
+            "value":"Miami"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"Laptop"
+              },{
+              "jsonClass":"Field",
+              "value":985
+              },{
+              "jsonClass":"Field",
+              "value":15000
+              }]
+            },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":10
+              },{
+              "jsonClass":"Field",
+            "value":"Tablet"
+              },{
+              "jsonClass":"Field",
+            "value":"Electronics"
+              },{
+              "jsonClass":"Field",
+            "value":"USA"
+              },{
+              "jsonClass":"Field",
+            "value":"Boston"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"null"
+              },{
+              "jsonClass":"Field",
+            "value":"Tablet"
+              },{
+              "jsonClass":"Field",
+              "value":657
+              },{
+              "jsonClass":"Field",
+              "value":18000
+              }]
+            }]
+        }
+      },
+      "directive":""
+    },
+    "typeinfo":{
+      "jsonClass":"Bundle",
+      "type":"TreeMapErp",
+      "data":{
+        "pkCol":"Item_PK",
+        "categoryCol":"Category",
+        "level1Col":"Level1",
+        "level2Col":"Level2",
+        "level3Col":"Level3",
+        "level4Col":"Level4",
+        "level5Col":"Level5",
+        "desCol":"Description",
+        "skuCol":"SKU",
+        "sizeCol":"Size"
+      },
+      "chart":{
+        "width":"500",
+        "height":"610",
+        "margin":{
+          "b":"0",
+          "t":"30",
+          "l":"170",
+          "r":"20"
+        }
+      }
+    }
+  },
+  "includes":["/elx/lib/treemap.js","/elx/lib/browserdetect.js"],
+  "edit-section":[{
+    "id":"view",
+    "name":"View"
+  },{
+    "id":"data",
+    "name":"Data"
+  },{
+    "id":"TreeMapErp",
+    "name":"TreeMapErp"
+  },{
+    "id":"filters",
+    "name":"Filters"
+  }]
+}
+========
+<<<<<<<=edit-json=
+{
+  "jsonClass":"ViewSection",
+  "id":"TreeMapErp",
+  "rows":[{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-height-label",
+      "type":"label",
+      "text":"Chart Height"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-chartHeight",
+      "type":"field",
+      "value":"${typeinfo.chartHeight}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-width-label",
+      "type":"label",
+      "text":"Chart Width"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-chartWidth",
+      "type":"field",
+      "value":"${typeinfo.chartWidth}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-pkCol-label",
+      "type":"label",
+      "text":"Primary Key Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-pkCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.pkCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-categoryCol-label",
+      "type":"label",
+      "text":"Category Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-categoryCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.categoryCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-level1Col-label",
+      "type":"label",
+      "text":"Level1 Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-level1Col",
+      "type":"select-schema-column",
+      "value":"${typeinfo.level1Col}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-level2Col-label",
+      "type":"label",
+      "text":"Level2 Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-level2Col",
+      "type":"select-schema-column",
+      "value":"${typeinfo.level2Col}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-level3Col-label",
+      "type":"label",
+      "text":"Level3 Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-level3Col",
+      "type":"select-schema-column",
+      "value":"${typeinfo.level3Col}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-level4Col-label",
+      "type":"label",
+      "text":"Level4 Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-level4Col",
+      "type":"select-schema-column",
+      "value":"${typeinfo.level4Col}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-level5Col-label",
+      "type":"label",
+      "text":"Level5 Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-level5Col",
+      "type":"select-schema-column",
+      "value":"${typeinfo.level5Col}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-desCol-label",
+      "type":"label",
+      "text":"Description Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-desCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.desCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-skuCol-label",
+      "type":"label",
+      "text":"SKU Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-skuCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.skuCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-sizeCol-label",
+      "type":"label",
+      "text":"Size Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-sizeCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.sizeCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginL-label",
+      "type":"label",
+      "text":"Left margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginL",
+      "type":"field",
+      "value":"${typeinfo.marginL}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginR-label",
+      "type":"label",
+      "text":"Right margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginR",
+      "type":"field",
+      "value":"${typeinfo.marginR}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginT-label",
+      "type":"label",
+      "text":"Top margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginT",
+      "type":"field",
+      "value":"${typeinfo.marginT}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginB-label",
+      "type":"label",
+      "text":"Bottom margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginB",
+      "type":"field",
+      "value":"${typeinfo.marginB}",
+      "readonly":false
+    }]
+  }]
+}
+========
+<<<<<<<=edit-js=
+elx.bundle.type.TreeMapErp = {
+
+  	init : function(view) {
+		$("#typeinfo-chartHeight").val(view.typeinfo.chart.height);
+      	$("#typeinfo-chartWidth").val(view.typeinfo.chart.width);
+   
+      	$("#typeinfo-marginR").val(view.typeinfo.chart.margin.r);
+      	$("#typeinfo-marginL").val(view.typeinfo.chart.margin.l);
+      	$("#typeinfo-marginT").val(view.typeinfo.chart.margin.t);
+      	$("#typeinfo-marginB").val(view.typeinfo.chart.margin.b);
+	},
+
+	validate : function(view) {
+		return true;
+	},
+
+	save : function(view) {
+		var cHeight = $("#typeinfo-chartHeight").val();
+		view.typeinfo.chart.height = cHeight;
+      	var cWidth = $("#typeinfo-chartWidth").val();
+		view.typeinfo.chart.width = cWidth;
+           var pkCol = $("#typeinfo-pkCol").val();
+      	view.typeinfo.data.pkCol = pkCol;
+        var categoryCol = $("#typeinfo-categoryCol").val();
+      	view.typeinfo.data.categoryCol = categoryCol;
+      	var level1Col = $("#typeinfo-level1Col").val();
+      	view.typeinfo.data.level1Col = level1Col;
+        var level2Col = $("#typeinfo-level2Col").val();
+      	view.typeinfo.data.level2Col = level2Col;
+              var level3Col = $("#typeinfo-level3Col").val();
+      	view.typeinfo.data.level3Col = level3Col;
+         var level4Col = $("#typeinfo-level4Col").val();
+      	view.typeinfo.data.level4Col = level4Col;
+           var level5Col = $("#typeinfo-level5Col").val();
+      	view.typeinfo.data.level5Col = level5Col;
+         var desCol = $("#typeinfo-desCol").val();
+      	view.typeinfo.data.desCol = desCol;
+      
+      	var skuCol = $("#typeinfo-skuCol").val();
+      	view.typeinfo.data.skuCol = skuCol;
+        var sizeCol = $("#typeinfo-sizeCol").val();
+      	view.typeinfo.data.sizeCol = sizeCol;
+          
+      	var mLeft =$("#typeinfo-marginL").val();
+    	view.typeinfo.chart.margin.l=mLeft;
+      
+      	var mRight = $("#typeinfo-marginR").val();
+      	view.typeinfo.chart.margin.r=mRight;
+      
+      	var mBottom = $("#typeinfo-marginL").val();
+      	view.typeinfo.chart.margin.l=mBottom;
+      	var mTop = $("#typeinfo-marginT").val();
+      	view.typeinfo.chart.margin.t=mTop;
+    }
+	
+}
+========
+<<<<<<<=view-html=
+<style type='text/css'>
+${id}{overflow:hidden;margin:0;font-size:12px;font-family:"Helvetica Neue",Helvetica}.footer{z-index:1;display:block;font-size:26px;font-weight:200;text-shadow:0 1px 0 #fff}svg{overflow:hidden}rect{pointer-events:all;cursor:pointer;stroke:#EEE}.chart{display:block;margin:auto}.parent .label{color:#FFF;text-shadow:1px 1px 1px rgba(0,0,0,0.3);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,0.3);-moz-text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.labelbody{background:transparent}.label{margin:2px;white-space:pre;overflow:hidden;text-overflow:ellipsis;text-shadow:1px 1px 1px rgba(0,0,0,0.3);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,0.3);-moz-text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.child .label{white-space:pre-wrap;text-align:center;text-overflow:ellipsis}.cell{font-size:11px;cursor:pointer}
+</style>
+<div id="${id}"></div>
+<div class="footer">
+    <select>
+        <option value="size">Size</option>
+        <option value="count">Count</option>
+    </select>
+</div>
+
+	
+<div class='elx-script'>
+  var div =$("#${id}");
+   var cfgoptions = view.typeinfo.chart;
+	
+  var m = [cfgoptions.margin.b, cfgoptions.margin.l, cfgoptions.margin.t, cfgoptions.margin.r];
+            window.chartWidth = cfgoptions.width - m[1] - m[3];
+            window.chartHeight = cfgoptions.height - m[0] - m[2];
+            
+  window.xscale = d3.scale.linear().range([0, window.chartWidth]);
+window.yscale = d3.scale.linear().range([0, window.chartHeight]);
+  window.color = d3.scale.category10();
+  window.headerHeight = 20;
+  window.headerColor = "#555555";
+  window.transitionDuration = 500;
+    window.treemap = d3.layout.treemap()
+        .round(false)
+        .size([window.chartWidth, window.chartHeight])
+        .sticky(true)
+        .value(function(d) {
+            return d.size;
+        });
+   var svg = d3.select("#{id}")
+        .append("svg:svg")
+        .attr("width", window.chartWidth)
+        .attr("height", window.chartHeight);
+
+    window.chart = svg.append("svg:g");
+
+    window.defs = svg.append("defs");
+  
+ var rawdata=${code};
+  console.log("rawdata",JSON.stringify(rawdata));
+  function sum(numbers) {
+    return _.reduce(numbers, function(result, current) {
+        return result + parseFloat(current);
+    }, 0);
+}
+
+  
+   final_data=[];
+  
+  rawdata.forEach(function(d) 
+  {	
+  local_data={};
+
+  local_data={
+  
+  item_pk : d[view.typeinfo.data.pkCol],
+  Category: parseInt(d[view.typeinfo.data.categoryCol]),
+  Level1: d[view.typeinfo.data.level1Col],
+  Level2: d[view.typeinfo.data.level2Col],
+  Level3: d[view.typeinfo.data.level3Col],
+  Level4: d[view.typeinfo.data.level4Col],
+  Level5: d[view.typeinfo.data.level5Col],
+  Description: d[view.typeinfo.data.desCol],
+  SKU: parseFloat(d[view.typeinfo.data.skuCol]),
+  Size: parseFloat(d[view.typeinfo.data.sizeCol])
+  				};
+  					
+  
+  
+  final_data.push(local_data);
+  });
+ 
+var group_result = _.chain(final_data)
+    .groupBy("SKU")
+    .map(function(value, key) {
+        return {
+  			item_pk:_.first(_.pluck(value, "item_pk")),
+  			Category: _.first(_.pluck(value, "Category")),
+  			Level1:_.first(_.pluck(value, "Level1")),
+  			Level2:_.first(_.pluck(value, "Level2")),
+  			Level3:_.first(_.pluck(value, "Level3")),
+  			Level4:_.first(_.pluck(value, "Level4")),
+  			Level5:_.first(_.pluck(value, "Level5")),
+  Description:_.first(_.pluck(value, "Description")),
+  			
+            name: key,
+            size: sum(_.pluck(value, "Size"))
+        }
+    })
+    .value();
+ 
+  console.log("group_result",JSON.stringify(group_result));
+var nest = d3.nest()
+                .key(function(d) { return d.Level1; })
+           .key(function(d) { return d.Level2; })
+              .key(function(d) { return d.Level3; })
+  //			.key(function(d) { return d.Level4; })
+  //			.key(function(d) { return d.Level5; })
+  				.entries(group_result);
+  
+  
+var jsonstr = JSON.stringify(nest);
+ 
+  var new_jsonstr = jsonstr.replace('"key"','"name"','gi');
+   var new_jsonstr2 = new_jsonstr.replace('"values"','"children"','gi');
+  
+  var nest_1 = JSON.parse(new_jsonstr2);
+  var nest_2 ={"name":"14 Stock Groupings", "children": nest_1};
+ 
+  
+  window.insertLinebreaks = function (d) {
+    var el = d3.select(this);
+    var words = [];
+  words.push(d.name,d.Description,(d.size)? "size: "+d.size : null);
+  
+    el.text('');
+	
+    for (var i = 0; i < words.length; i++) {
+        var tspan = el.append('tspan').text(words[i]);
+        if (i > 0)
+            tspan.attr('x', 0).attr('dy', '15');
+    }
+};
+  
+  window.nest_Data=nest_2;
+  window.isIE=BrowserDetect.browser == 'Explorer';
+  filterInitation();
+   window.root =window.nest_Data;
+ window.node = window.nest_Data;
+  
+  JsonProcess();
+        
+</div>
+========
