@@ -438,8 +438,8 @@
         "sizeCol":"Size"
       },
       "chart":{
-        "width":"500",
-        "height":"610",
+        "width":"1000",
+        "height":"1200",
         "margin":{
           "b":"0",
           "t":"30",
@@ -506,9 +506,9 @@
       "text":"Primary Key Column"
     },{
       "jsonClass":"SchemaColumnSelect",
-      "id":"typeinfo-pkCol",
+      "id":"typeinfo-data-pkCol",
       "type":"select-schema-column",
-      "value":"${typeinfo.pkCol}"
+      "value":"${typeinfo.data.pkCol}"
     }]
   },{
     "jsonClass":"Row",
@@ -519,9 +519,9 @@
       "text":"Category Column"
     },{
       "jsonClass":"SchemaColumnSelect",
-      "id":"typeinfo-categoryCol",
+      "id":"typeinfo-data-categoryCol",
       "type":"select-schema-column",
-      "value":"${typeinfo.categoryCol}"
+      "value":"${typeinfo.data.categoryCol}"
     }]
   },{
     "jsonClass":"Row",
@@ -532,9 +532,9 @@
       "text":"Level1 Column"
     },{
       "jsonClass":"SchemaColumnSelect",
-      "id":"typeinfo-level1Col",
+      "id":"typeinfo-data-level1Col",
       "type":"select-schema-column",
-      "value":"${typeinfo.level1Col}"
+      "value":"${typeinfo.data.level1Col}"
     }]
   },{
     "jsonClass":"Row",
@@ -545,9 +545,9 @@
       "text":"Level2 Column"
     },{
       "jsonClass":"SchemaColumnSelect",
-      "id":"typeinfo-level2Col",
+      "id":"typeinfo-data-level2Col",
       "type":"select-schema-column",
-      "value":"${typeinfo.level2Col}"
+      "value":"${typeinfo.data.level2Col}"
     }]
   },{
     "jsonClass":"Row",
@@ -558,9 +558,9 @@
       "text":"Level3 Column"
     },{
       "jsonClass":"SchemaColumnSelect",
-      "id":"typeinfo-level3Col",
+      "id":"typeinfo-data-level3Col",
       "type":"select-schema-column",
-      "value":"${typeinfo.level3Col}"
+      "value":"${typeinfo.data.level3Col}"
     }]
   },{
     "jsonClass":"Row",
@@ -571,9 +571,9 @@
       "text":"Level4 Column"
     },{
       "jsonClass":"SchemaColumnSelect",
-      "id":"typeinfo-level4Col",
+      "id":"typeinfo-data-level4Col",
       "type":"select-schema-column",
-      "value":"${typeinfo.level4Col}"
+      "value":"${typeinfo.data.level4Col}"
     }]
   },{
     "jsonClass":"Row",
@@ -584,9 +584,9 @@
       "text":"Level5 Column"
     },{
       "jsonClass":"SchemaColumnSelect",
-      "id":"typeinfo-level5Col",
+      "id":"typeinfo-data-level5Col",
       "type":"select-schema-column",
-      "value":"${typeinfo.level5Col}"
+      "value":"${typeinfo.data.level5Col}"
     }]
   },{
     "jsonClass":"Row",
@@ -597,9 +597,9 @@
       "text":"Description Column"
     },{
       "jsonClass":"SchemaColumnSelect",
-      "id":"typeinfo-desCol",
+      "id":"typeinfo-data-desCol",
       "type":"select-schema-column",
-      "value":"${typeinfo.desCol}"
+      "value":"${typeinfo.data.desCol}"
     }]
   },{
     "jsonClass":"Row",
@@ -610,9 +610,9 @@
       "text":"SKU Column"
     },{
       "jsonClass":"SchemaColumnSelect",
-      "id":"typeinfo-skuCol",
+      "id":"typeinfo-data-skuCol",
       "type":"select-schema-column",
-      "value":"${typeinfo.skuCol}"
+      "value":"${typeinfo.data.skuCol}"
     }]
   },{
     "jsonClass":"Row",
@@ -623,9 +623,9 @@
       "text":"Size Column"
     },{
       "jsonClass":"SchemaColumnSelect",
-      "id":"typeinfo-sizeCol",
+      "id":"typeinfo-data-sizeCol",
       "type":"select-schema-column",
-      "value":"${typeinfo.sizeCol}"
+      "value":"${typeinfo.data.sizeCol}"
     }]
   },{
     "jsonClass":"Row",
@@ -690,6 +690,8 @@
 elx.bundle.type.TreeMapErp = {
 
   	init : function(view) {
+      
+       elx.host.utils.initSectionGroups(view,$("#TreeMapErp-div"));
 		$("#typeinfo-chartHeight").val(view.typeinfo.chart.height);
       	$("#typeinfo-chartWidth").val(view.typeinfo.chart.width);
    
@@ -697,6 +699,8 @@ elx.bundle.type.TreeMapErp = {
       	$("#typeinfo-marginL").val(view.typeinfo.chart.margin.l);
       	$("#typeinfo-marginT").val(view.typeinfo.chart.margin.t);
       	$("#typeinfo-marginB").val(view.typeinfo.chart.margin.b);
+      
+      
 	},
 
 	validate : function(view) {
@@ -708,26 +712,26 @@ elx.bundle.type.TreeMapErp = {
 		view.typeinfo.chart.height = cHeight;
       	var cWidth = $("#typeinfo-chartWidth").val();
 		view.typeinfo.chart.width = cWidth;
-           var pkCol = $("#typeinfo-pkCol").val();
+           var pkCol = $("#typeinfo-data-pkCol").val();
       	view.typeinfo.data.pkCol = pkCol;
-        var categoryCol = $("#typeinfo-categoryCol").val();
+        var categoryCol = $("#typeinfo-data-categoryCol").val();
       	view.typeinfo.data.categoryCol = categoryCol;
-      	var level1Col = $("#typeinfo-level1Col").val();
+      	var level1Col = $("#typeinfo-data-level1Col").val();
       	view.typeinfo.data.level1Col = level1Col;
-        var level2Col = $("#typeinfo-level2Col").val();
+        var level2Col = $("#typeinfo-data-level2Col").val();
       	view.typeinfo.data.level2Col = level2Col;
-              var level3Col = $("#typeinfo-level3Col").val();
+              var level3Col = $("#typeinfo-data-level3Col").val();
       	view.typeinfo.data.level3Col = level3Col;
-         var level4Col = $("#typeinfo-level4Col").val();
+         var level4Col = $("#typeinfo-data-level4Col").val();
       	view.typeinfo.data.level4Col = level4Col;
-           var level5Col = $("#typeinfo-level5Col").val();
+           var level5Col = $("#typeinfo-data-level5Col").val();
       	view.typeinfo.data.level5Col = level5Col;
-         var desCol = $("#typeinfo-desCol").val();
+         var desCol = $("#typeinfo-data-desCol").val();
       	view.typeinfo.data.desCol = desCol;
       
-      	var skuCol = $("#typeinfo-skuCol").val();
+      	var skuCol = $("#typeinfo-data-skuCol").val();
       	view.typeinfo.data.skuCol = skuCol;
-        var sizeCol = $("#typeinfo-sizeCol").val();
+        var sizeCol = $("#typeinfo-data-sizeCol").val();
       	view.typeinfo.data.sizeCol = sizeCol;
           
       	var mLeft =$("#typeinfo-marginL").val();
@@ -746,7 +750,7 @@ elx.bundle.type.TreeMapErp = {
 ========
 <<<<<<<=view-html=
 <style type='text/css'>
-${id}{overflow:hidden;margin:0;font-size:12px;font-family:"Helvetica Neue",Helvetica}.footer{z-index:1;display:block;font-size:26px;font-weight:200;text-shadow:0 1px 0 #fff}svg{overflow:hidden}rect{pointer-events:all;cursor:pointer;stroke:#EEE}.chart{display:block;margin:auto}.parent .label{color:#FFF;text-shadow:1px 1px 1px rgba(0,0,0,0.3);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,0.3);-moz-text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.labelbody{background:transparent}.label{margin:2px;white-space:pre;overflow:hidden;text-overflow:ellipsis;text-shadow:1px 1px 1px rgba(0,0,0,0.3);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,0.3);-moz-text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.child .label{white-space:pre-wrap;text-align:center;text-overflow:ellipsis}.cell{font-size:11px;cursor:pointer}
+#${id}{overflow:hidden;margin:0;font-size:12px;font-family:"Helvetica Neue",Helvetica}.footer{z-index:1;display:block;font-size:26px;font-weight:200;text-shadow:0 1px 0 #fff}svg{overflow:hidden}rect{pointer-events:all;cursor:pointer;stroke:#EEE}.chart{display:block;margin:auto}.parent .label{color:#FFF;text-shadow:1px 1px 1px rgba(0,0,0,0.3);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,0.3);-moz-text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.labelbody{background:transparent}.label{margin:2px;white-space:pre;overflow:hidden;text-overflow:ellipsis;text-shadow:1px 1px 1px rgba(0,0,0,0.3);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,0.3);-moz-text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.child .label{white-space:pre-wrap;text-align:center;text-overflow:ellipsis}.cell{font-size:11px;cursor:pointer}
 </style>
 <div id="${id}"></div>
 <div class="footer">
@@ -763,6 +767,7 @@ ${id}{overflow:hidden;margin:0;font-size:12px;font-family:"Helvetica Neue",Helve
 	
   var m = [cfgoptions.margin.b, cfgoptions.margin.l, cfgoptions.margin.t, cfgoptions.margin.r];
             window.chartWidth = cfgoptions.width - m[1] - m[3];
+  console.log("window.chartWidth",window.chartWidth);
             window.chartHeight = cfgoptions.height - m[0] - m[2];
             
   window.xscale = d3.scale.linear().range([0, window.chartWidth]);
@@ -778,7 +783,7 @@ window.yscale = d3.scale.linear().range([0, window.chartHeight]);
         .value(function(d) {
             return d.size;
         });
-   var svg = d3.select("#{id}")
+   var svg = d3.select("#${id}")
         .append("svg:svg")
         .attr("width", window.chartWidth)
         .attr("height", window.chartHeight);
@@ -805,14 +810,15 @@ window.yscale = d3.scale.linear().range([0, window.chartHeight]);
   local_data={
   
   item_pk : d[view.typeinfo.data.pkCol],
-  Category: parseInt(d[view.typeinfo.data.categoryCol]),
+  //Category: parseInt(d[view.typeinfo.data.categoryCol]),
+  Category: d[view.typeinfo.data.categoryCol],
   Level1: d[view.typeinfo.data.level1Col],
   Level2: d[view.typeinfo.data.level2Col],
   Level3: d[view.typeinfo.data.level3Col],
   Level4: d[view.typeinfo.data.level4Col],
   Level5: d[view.typeinfo.data.level5Col],
   Description: d[view.typeinfo.data.desCol],
-  SKU: parseFloat(d[view.typeinfo.data.skuCol]),
+  SKU: d[view.typeinfo.data.skuCol],
   Size: parseFloat(d[view.typeinfo.data.sizeCol])
   				};
   					
@@ -844,7 +850,7 @@ var group_result = _.chain(final_data)
 var nest = d3.nest()
                 .key(function(d) { return d.Level1; })
            .key(function(d) { return d.Level2; })
-              .key(function(d) { return d.Level3; })
+             .key(function(d) { return d.Level3; })
   //			.key(function(d) { return d.Level4; })
   //			.key(function(d) { return d.Level5; })
   				.entries(group_result);
