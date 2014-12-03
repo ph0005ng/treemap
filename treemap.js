@@ -99,6 +99,24 @@ JsonProcess= function(){
             .attr("class", "labelbody")
             .append("div")
             .attr("class", "label");
+			
+				// Tooltip
+			var tooltip = d3.select("body")
+				.append("div")
+				.attr("class", "tooltip")
+				.style("font", "Arial black;")
+				.style("font-size", "11px")
+				.style("margin", "8px")
+				.style("padding", "5px")
+				.style("border", "1px solid #000")
+				.style("background-color", "rgba(255,255,255,1)")
+				.style("position", "absolute")
+				.style("z-index", "1001")
+				.style("opacity", "0.8")
+				.style("border-radius", "3px")
+				.style("box-shadow", "5px 5px 5px #888")
+				.style("visibility", "hidden");
+				
         // update transition
         var parentUpdateTransition = parentCells.transition().duration(transitionDuration);
         parentUpdateTransition.select(".cell")
@@ -136,12 +154,22 @@ JsonProcess= function(){
             .on("click", function(d) {
                 zoom(window.node === d.parent ? window.root : d.parent);
             })
-            .on("mouseover", function() {
+            .on("mouseover", function(d,i) {
                 this.parentNode.appendChild(this); // workaround for bringing elements to the front (ie z-index)
+				console.log("d when mouseover",d);
                 d3.select(this)
                     .attr("filter", "url(#outerDropShadow)")
                     .select(".background")
                     .style("stroke", "#000000");
+					var prefix=d3.formatPrefix(1000);
+					var content = "<b>" + d.Category + "</b><hr>"
+			+ "Name: " + d.name + "<br>"
+			+ "Description: " + d.Description + "<br>"
+			+ "Size: " + formatValues(d.size,prefix) + "<br>"; 
+		d3.select(".tooltip").style("visibility", "visible")
+			.style("top", (d3.event.pageY-35)+"px")
+			.style("left", d3.event.pageX+"px")
+			.html(content);
             })
             .on("mouseout", function() {
                 d3.select(this)
@@ -223,7 +251,9 @@ JsonProcess= function(){
 
 }
 
-
+formatValues=function(val,prefix) {
+return ' '+d3.round(prefix.scale(val),2)+prefix.symbol;
+}
 
 
 
@@ -303,10 +333,11 @@ JsonProcess= function(){
                         .filter(function(d) {
                             return d.parent === self.window.node; // only get the children for selected group
                         })
-                        .select(".foreignObject .labelbody .label")
-                        .style("color", function(d) {
+                        .selectAll(".foreignObject .labelbody div svg .label")
+                        .style("fill", function(d) {
                             return idealTextColor(color(d.parent.name));
-                        });
+                        }).style({'font-size':'20px','x':'20px'})
+						.selectAll("tspan").attr("x",'20').attr("dy",'20');
 
                     if (window.isIE) {
                         window.chart.selectAll(".cell.child")
