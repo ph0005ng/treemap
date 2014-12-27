@@ -235,7 +235,7 @@ function treeMapChart() {
                 if (!i && (level !== root)) {
                     treeChart.selectAll(".cell.child")
                         .filter(function(d) {
-                            return d.parent === window['treemap_'+viewId].node; // only get the children for selected group
+                            return _.isEqual(d.parent,window['treemap_'+viewId].node); // only get the children for selected group
                         })
                         .selectAll(".foreignObject .labelbody div svg .label")
                         .style("fill", function(d) {
@@ -246,15 +246,17 @@ function treeMapChart() {
                     if (window.isIE) {
                         treeChart.selectAll(".cell.child")
                             .filter(function(d) {
-                                return d.parent === window['treemap_'+viewId].node; // only get the children for selected group
+                                return _.isEqual(d.parent,window['treemap_'+viewId].node); // only get the children for selected group
                             })
                             .select(".foreignObject .labelbody .label")
                             .style("display", "")
                     } else {
                         treeChart.selectAll(".cell.child")
                             .filter(function(d) {
-                                return d.parent === window['treemap_'+viewId].node; // only get the children for selected group
+							console.log("nodeR",window['treemap_'+viewId].node," dparent",d.parent);
+							    return _.isEqual(d.parent,window['treemap_'+viewId].node); // only get the children for selected group
                             })
+							
                             .select(".foreignObject")
                             .style("display", "")
                     }
