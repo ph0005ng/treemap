@@ -1,0 +1,1141 @@
+<<<<<<<=view-json=
+{
+  "id":"TreeMapRevise2",
+  "name":"TreeMapRevise2",
+  "category":"Chart",
+  "default":{
+    "jsonClass":"View",
+    "elxType":"View",
+    "vtype":"bundle",
+    "state":"visible",
+    "isContainer":false,
+    "position":{
+      "jsonClass":"Position",
+      "elxType":"Position",
+      "height":"420",
+      "width":"670",
+      "zIndex":"auto"
+    },
+    "data":{
+      "jsonClass":"DataEmbedded",
+      "datasource":{
+        "jsonClass":"DataSource",
+        "name":"initData",
+        "stype":"Data",
+        "desc":"default data",
+        "schema":{
+          "jsonClass":"Schema",
+          "caseSensitive":false,
+          "columns":[
+            {
+              "jsonClass":"SchemaColumn",
+              "name":"Item_PK",
+              "dtype":"String",
+              "attrs":[
+                {
+                  "jsonClass":"PrimaryKey",
+                  "name":"PrimaryKey"
+                }
+              ]
+            },
+            {
+              "jsonClass":"SchemaColumn",
+              "name":"Category",
+              "dtype":"String",
+              "attrs":[
+                {
+                  "jsonClass":"PrimaryKey",
+                  "name":"PrimaryKey"
+                }
+              ]
+            },
+            {
+              "jsonClass":"SchemaColumn",
+              "name":"Level1",
+              "dtype":"String",
+              "attrs":[
+
+              ]
+            },
+            {
+              "jsonClass":"SchemaColumn",
+              "name":"Level2",
+              "dtype":"String",
+              "attrs":[
+
+              ]
+            },
+            {
+              "jsonClass":"SchemaColumn",
+              "name":"Level3",
+              "dtype":"String",
+              "attrs":[
+
+              ]
+            },
+            {
+              "jsonClass":"SchemaColumn",
+              "name":"Level4",
+              "dtype":"String",
+              "attrs":[
+
+              ]
+            },
+            {
+              "jsonClass":"SchemaColumn",
+              "name":"Level5",
+              "dtype":"String",
+              "attrs":[
+
+              ]
+            },
+            {
+              "jsonClass":"SchemaColumn",
+              "name":"Description",
+              "dtype":"String",
+              "attrs":[
+
+              ]
+            },
+            {
+              "jsonClass":"SchemaColumn",
+              "name":"SKU",
+              "dtype":"Double",
+              "attrs":[
+
+              ]
+            },
+            {
+              "jsonClass":"SchemaColumn",
+              "name":"Size",
+              "dtype":"Double",
+              "attrs":[
+
+              ]
+            }
+          ]
+        },
+        "data":{
+          "jsonClass":"DataRecords",
+          "records":[
+            {
+              "jsonClass":"Record",
+              "fields":[
+                {
+                  "jsonClass":"Field",
+                  "value":1
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Watermelon"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Fruits and veg"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Thailand"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Bangkok"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Watermelon"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":259
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":2000
+                }
+              ]
+            },
+            {
+              "jsonClass":"Record",
+              "fields":[
+                {
+                  "jsonClass":"Field",
+                  "value":2
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Apple"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Fruits and veg"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Thailand"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Pattaya"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Apple"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":375
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":25000
+                }
+              ]
+            },
+            {
+              "jsonClass":"Record",
+              "fields":[
+                {
+                  "jsonClass":"Field",
+                  "value":3
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Onion"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Fruits and veg"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Malaysia"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Johor"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Onion"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":894
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":10500
+                }
+              ]
+            },
+            {
+              "jsonClass":"Record",
+              "fields":[
+                {
+                  "jsonClass":"Field",
+                  "value":4
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Carrot"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Fruits and veg"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Malaysia"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Johor"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Carrot"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":417
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":20410
+                }
+              ]
+            },
+            {
+              "jsonClass":"Record",
+              "fields":[
+                {
+                  "jsonClass":"Field",
+                  "value":5
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Pear"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Fruits and veg"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Malaysia"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Pahang"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Pear"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":657
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":6800
+                }
+              ]
+            },
+            {
+              "jsonClass":"Record",
+              "fields":[
+                {
+                  "jsonClass":"Field",
+                  "value":6
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Keyboard"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Electronics"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Japan"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Tokyo"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Keyboard"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":517
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":7800
+                }
+              ]
+            },
+            {
+              "jsonClass":"Record",
+              "fields":[
+                {
+                  "jsonClass":"Field",
+                  "value":7
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Mouse"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Electronics"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Japan"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Osaka"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Mouse"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":789
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":1800
+                }
+              ]
+            },
+            {
+              "jsonClass":"Record",
+              "fields":[
+                {
+                  "jsonClass":"Field",
+                  "value":8
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Desktop"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Electronics"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"USA"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Miami"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Desktop"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":841
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":3570
+                }
+              ]
+            },
+            {
+              "jsonClass":"Record",
+              "fields":[
+                {
+                  "jsonClass":"Field",
+                  "value":9
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Laptop"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Electronics"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"USA"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Miami"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Laptop"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":985
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":15000
+                }
+              ]
+            },
+            {
+              "jsonClass":"Record",
+              "fields":[
+                {
+                  "jsonClass":"Field",
+                  "value":10
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Tablet"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Electronics"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"USA"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Boston"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"null"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":"Tablet"
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":657
+                },
+                {
+                  "jsonClass":"Field",
+                  "value":18000
+                }
+              ]
+            }
+          ]
+        }
+      }, "hint":"directive-data-array",
+      "directive":"IA0KICBmdW5jdGlvbiBkYXRhKCl7DQogIHZhciB1bmlUYWJsZSA9IHZpZXcuZGF0YS5maWVsZHNbMF0udGFibGUgKyAiLiI7DQogICANCiAgdmFyIHBrQ29sPXZpZXcudHlwZWluZm8uZGF0YS5maWVsZHMucGtDb2w7DQogICAgdmFyIGRlc0NvbD12aWV3LnR5cGVpbmZvLmRhdGEuZmllbGRzLmRlc0NvbDsNCiAgdmFyIGNvbG9yQmFzaXNDb2w9dmlldy50eXBlaW5mby5kYXRhLmZpZWxkcy5jb2xvckJhc2lzQ29sOw0KICB2YXIgdD12aWV3LnR5cGVpbmZvLmRhdGEuZmllbGRzLm9wZXJhYmxlLnZhbHVlczsgDQogIHZhciBrPXZpZXcudHlwZWluZm8uZGF0YS5maWVsZHMua2V5czsNCiAgdmFyIGNvbHVtbnM9W107IHZhciBvcGVyYXRpb25zPVtdOyB2YXIga2V5cz1bXTsNCiANCglwa0NvbC5mb3JFYWNoKGZ1bmN0aW9uKGQsaSkgew0KICBrZXlzLnB1c2goZC5uYW1lKTsNCiAgICAgfSkNCg0KICAgICBkZXNDb2wuZm9yRWFjaChmdW5jdGlvbihkLGkpIHsNCiAga2V5cy5wdXNoKGQubmFtZSk7DQogICAgfSkNCiAJY29sb3JCYXNpc0NvbC5mb3JFYWNoKGZ1bmN0aW9uKGQsaSkgew0KICBrZXlzLnB1c2goZC5uYW1lKTsNCiAgICB9KQ0KICAgIGsuZm9yRWFjaChmdW5jdGlvbihkLGkpIHsNCiAgICBrZXlzLnB1c2goZC5uYW1lKTt9KQ0KICANCiAgICB0LmZvckVhY2goZnVuY3Rpb24oZCxpKSB7DQogIGNvbHVtbnMucHVzaChkLm5hbWUpOw0KICAgIG9wZXJhdGlvbnMucHVzaChkLm9wKTsNCiAgfSkNCiANCiAgICAgcmV0dXJuIHJvd3MuZ3JvdXBCeShrZXlzLGNvbHVtbnMsb3BlcmF0aW9ucyk7DQp9DQpkYXRhKCk7"
+    },
+    "typeinfo":{
+      "jsonClass":"Bundle",
+      "type":"TreeMapRevise2",
+      "data":{
+        "series":{
+          "sort":"series-asc"
+        },
+        "keys":{
+          "sort":"key-asc"
+        },
+        "fields":{
+          "pkCol":[
+            {
+              "name":"Item_PK",
+              "id":"|"
+            }
+          ],
+           "desCol":[
+            {
+              "name":"Description",
+              "id":"|"
+            }
+          ],
+          "colorBasisCol":[
+            {
+              "name":"ColorBasis",
+              "id":"|"
+            }
+          ],  "keys":[{
+            "name":"Level1"
+          }],
+          "operable":{
+            "values":[
+              {
+                "id":"Size",
+                "name":"SIZE",
+                "op":"sum"
+              }
+            ]
+          }
+        }
+      },
+      "width":"1000",
+      "height":"1200",
+      "marginB":"0",
+      "marginT":"30",
+      "marginL":"170",
+      "marginR":"20",
+      "prefixMagnitude":"1000",
+      "formatValue":"formatValue=function(val,prefix) {return ' '+d3.round(prefix.scale(val),2)+prefix.symbol;}",
+      "content":"hi"
+    }
+  },
+  "includes":[
+    "/elx/lib/treemapRevised.js",
+    "/elx/lib/browserdetect.js"
+  ],
+  "edit-section":[
+    {
+      "id":"view",
+      "name":"View"
+    },
+    {
+      "id":"data",
+      "name":"Data"
+    },
+    {
+      "id":"TreeMapRevise2",
+      "name":"TreeMapRevise2"
+    },
+    {
+      "id":"filters",
+      "name":"Filters"
+    }
+  ]
+}
+========
+<<<<<<<=edit-json=
+{
+  "jsonClass":"ViewSection",
+  "id":"TreeMapRevise2",
+  "rows":[{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-height-label",
+      "type":"label",
+      "text":"Chart Height"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-height",
+      "type":"field",
+      "value":"${typeinfo.height}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-width-label",
+      "type":"label",
+      "text":"Chart Width"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-width",
+      "type":"field",
+      "value":"${typeinfo.width}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-pkCol-label",
+      "type":"label",
+      "text":"Primary Key Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-data-pkCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.data.pkCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-desCol-label",
+      "type":"label",
+      "text":"Description Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-data-desCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.data.desCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-colorBasisCol-label",
+      "type":"label",
+      "text":"ColorBasis Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-data-colorBasisCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.data.colorBasisCol}"
+    }]
+  },{
+      "jsonClass":"Row",
+      "cols":[{
+        "jsonClass":"Label",
+        "id":"typeinfo-property-label",
+        "type":"label",
+        "text":"Keys"
+      },{
+        "jsonClass":"Div",
+        "id":"typeinfo-property"
+      }]
+    },{
+      "jsonClass":"Row",
+      "cols":[{
+        "jsonClass":"Label",
+        "id":"typeinfo-data-fields-operable-values-label",
+        "type":"label",
+        "text":"Column"
+      },{
+        "jsonClass":"Div",
+        "id":"typeinfo-data-fields-operable-values"
+      }]
+    },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginL-label",
+      "type":"label",
+      "text":"Left margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginL",
+      "type":"field",
+      "value":"${typeinfo.marginL}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginR-label",
+      "type":"label",
+      "text":"Right margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginR",
+      "type":"field",
+      "value":"${typeinfo.marginR}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginT-label",
+      "type":"label",
+      "text":"Top margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginT",
+      "type":"field",
+      "value":"${typeinfo.marginT}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginB-label",
+      "type":"label",
+      "text":"Bottom margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginB",
+      "type":"field",
+      "value":"${typeinfo.marginB}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-prefixMagnitude-label",
+      "type":"label",
+      "text":"Prefix Magnitude"
+    },{
+      "jsonClass":"Select",
+      "id":"typeinfo-prefixMagnitude",
+      "type":"select",
+      "value":"${typeinfo.prefixMagnitude}",
+      "options":[{
+        "jsonClass":"Option",
+        "text":"thousand",
+        "value":"1000"
+      },{
+        "jsonClass":"Option",
+        "text":"million",
+        "value":"1000000"
+      }]
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-formatValue-label",
+      "type":"label",
+      "text":"Format Value"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-formatValue",
+      "type":"field",
+      "value":"${typeinfo.formatValue}",
+      "readonly":false
+    }]
+  }]
+}
+========
+<<<<<<<=edit-js=
+elx.bundle.type.TreeMapRevise2 = {
+
+  	init : function(view) {
+      
+   
+	  var dataOps =  elx.utils.getElxChartOperablesData(view, view.typeinfo.data.fields.operable.values);
+   		var tableOp = new elx.MultiChartValueColumnSection("typeinfo-data-fields-operable-values-table",
+                                                        "typeinfo-data-fields-operable-values", view, dataOps);
+		$("#typeinfo-data-fields-operable-values-table").data("table",tableOp);
+      
+        $("#typeinfo-data-pkCol").val(view.typeinfo.data.fields.pkCol[0].name);
+               $("#typeinfo-data-desCol").val(view.typeinfo.data.fields.desCol[0].name);
+      $("#typeinfo-data-colorBasisCol").val(view.typeinfo.data.fields.colorBasisCol[0].name);
+      	  var dataKey = elx.MultiKeyColumnSection.getKeyData(view,view.typeinfo.data.fields.keys);
+           var tableKey=  new elx.MultiKeyColumnSection("typeinfo-property-keys","typeinfo-property", view, dataKey);
+      $("#typeinfo-property-keys").data("table",tableKey);
+          elx.host.utils.initSectionGroups(view,$("#TreeMapRevise2-div"));
+      
+	},
+
+	validate : function(view) {
+		return true;
+	},
+
+	save : function(view) {
+      	var dataTableOp = $("#typeinfo-data-fields-operable-values-table").data("table");
+       var dataOp = dataTableOp.table.getData();
+          view.typeinfo.data.fields.operable.values = 
+          elx.utils.buildElxChartOperablesData(view.typeinfo.data.fields.operable.values,dataOp);
+      	elx.host.utils.saveProperties(view.typeinfo);
+   	var dpkCol = $("#typeinfo-data-pkCol").val();
+		view.typeinfo.data.fields.pkCol[0].name = dpkCol;
+  
+       var ddesCol = $("#typeinfo-data-desCol").val();
+		view.typeinfo.data.fields.desCol[0].name = ddesCol;
+      	var dcolorBasisCol = $("#typeinfo-data-colorBasisCol").val();
+		view.typeinfo.data.fields.colorBasisCol[0].name = dcolorBasisCol;
+      
+       var dataTableKey = $("#typeinfo-property-keys").data("table");
+        var dataKey = dataTableKey.table.getData();
+        view.typeinfo.data.fields.keys = elx.MultiKeyColumnSection.buildKeyData(dataKey);
+       elx.host.utils.saveProperties(view.typeinfo);
+		
+    }
+	
+}
+========
+<<<<<<<=view-html=
+<style type='text/css'>
+#${id}{overflow:hidden;margin:0;font-size:12px;font-family:"Helvetica Neue",Helvetica}.footer{z-index:1;display:block;font-size:26px;font-weight:200;text-shadow:0 1px 0 #fff}svg{overflow:hidden}rect{pointer-events:all;cursor:pointer;stroke:#EEE}.chart{display:block;margin:auto}.parent .label{color:#FFF;text-shadow:1px 1px 1px rgba(0,0,0,0.3);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,0.3);-moz-text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.labelbody{background:transparent}.label{margin:2px;white-space:pre;overflow:hidden;text-overflow:ellipsis;text-shadow:1px 1px 1px rgba(0,0,0,0.3);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,0.3);-moz-text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.child .label{white-space:pre-wrap;text-align:center;text-overflow:ellipsis}.cell{font-size:11px;cursor:pointer}
+  .slider-tooltip {
+position:absolute;
+display:block;
+top:-25px;
+width:50px;
+height:20px;
+color:#fff;
+text-align:center;
+font:10pt Tahoma,Arial,sans-serif;
+border-radius:3px;
+border:1px solid #333;
+box-shadow:1px 1px 2px 0 rgba(0,0,0,.3);
+box-sizing:border-box;
+background:linear-gradient(top,rgba(69,72,77,0.5) 0 100%;
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8045484d',endColorstr='#80000000',GradientType=0);
+}
+</style>
+<div id="${id}"></div>
+<div class="footer">
+    <select>
+        <option value="size">Size</option>
+        <option value="count">Count</option>
+    </select>
+</div>
+
+	
+<div class='elx-script'>
+  /* data tab
+   
+  function data(){
+  var uniTable = view.data.fields[0].table + ".";
+   
+  var pkCol=view.typeinfo.data.fields.pkCol;
+    var desCol=view.typeinfo.data.fields.desCol;
+  var colorBasisCol=view.typeinfo.data.fields.colorBasisCol;
+  var t=view.typeinfo.data.fields.operable.values; 
+  var k=view.typeinfo.data.fields.keys;
+  var columns=[]; var operations=[]; var keys=[];
+ 
+	pkCol.forEach(function(d,i) {
+  keys.push(d.name);
+     })
+
+     desCol.forEach(function(d,i) {
+  keys.push(d.name);
+    })
+ 	colorBasisCol.forEach(function(d,i) {
+  keys.push(d.name);
+    })
+    k.forEach(function(d,i) {
+    keys.push(d.name);})
+  
+    t.forEach(function(d,i) {
+  columns.push(d.name);
+    operations.push(d.op);
+  })
+ 
+     return rows.groupBy(keys,columns,operations);
+}
+data();
+  */
+  
+  var rawData= ${data};
+  var f=view.typeinfo.data.fields;
+  //Inital debugFn() for data Processing 
+  var arrToHex,getArr,cutTableName,hexToModel;
+  debugFn();
+  console.log("rawData",JSON.stringify(rawData));
+  if (view.data.jsonClass != "DataEmbedded"){
+  var data1=arrToHex(rawData,f,view);}
+   
+    if (view.data.jsonClass === "DataEmbedded"){
+  var data2=[{"Item_PK":1,"Description":"Watermelon","ColorBasis":259,
+  "ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":2000},{"Item_PK":2,"Description":"Apple","ColorBasis":375,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":25000},{"Item_PK":3,"Description":"Onion","ColorBasis":894,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":10500},{"Item_PK":4,"Description":"Carrot","ColorBasis":417,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":20410},{"Item_PK":5,"Description":"Pear","ColorBasis":657,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":6800},{"Item_PK":6,"Description":"Keyboard","ColorBasis":517,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":7800},{"Item_PK":7,"Description":"Mouse","ColorBasis":789,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":1800},{"Item_PK":8,"Description":"Desktop","ColorBasis":841,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":3570},{"Item_PK":9,"Description":"Laptop","ColorBasis":985,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":15000},{"Item_PK":10,"Description":"Tablet","ColorBasis":657,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":18000}];
+  }else var data2 =hexToModel(data1);
+  console.log('data2',JSON.stringify(data2));
+ 
+  var groupResult=_.chain(data2).groupBy("ColorBasis")
+					.map(function(value,key){
+  var obj={
+					Item_PK:value[0].Item_PK,
+					Description:value[0].Description,
+  					ColorBasis:value[0].ColorBasis,
+  					ContentInfo:value[0].ContentInfo,
+  					LevelInfo:value[0].LevelInfo,
+  					Name:key
+  										};
+  for (var propertyName in value[0]) {
+   console.log("include",propertyName);
+  if (_.str.include(propertyName,"level#")) {
+ 
+  obj[propertyName]=sum(_.pluck(value, propertyName));
+  }
+  }
+					return obj;
+					
+					}).value();
+
+console.log("groupResult",JSON.stringify(groupResult));
+
+
+
+
+
+  
+  function debugFn(){
+   arrToHex =function(data, f, view) { //used together with operations
+ 	 var keyLength = f.keys.length;
+      var keyLArr = d3.range(1, keyLength+1);
+    var nameArr = getArr(f, 'name', view);
+    console.log("nameArr", nameArr);
+    var idArr = getArr(f, 'id', view);
+    console.log("idArr:", JSON.stringify(idArr));
+    var processedIdArr = [];
+  	var keyIdArr=[];
+    _.each(idArr, function(d, i) {
+        if (d.contains("#{") == true || d.contains("|") == true) {
+            processedIdArr.push(d);
+  } else  {
+  _.each(keyLArr,function(m,n) {
+  processedIdArr.push("$["+m+"]"); //for Levels
+  });
+  processedIdArr.push("#[" + d + "]"); //for contents
+
+  }
+    });
+    var combineArr = [];
+    processedIdArr.forEach(function(d, i) {
+
+        if (i === 0) {
+            var obj = 'Item_PK' + d;
+        } else if (i === 1) {
+            var obj = 'Description' + d;
+        }   else if (i === 2) {
+            var obj = 'ColorBasis' + d;
+          }  
+    if (i > 2 && i <= 2+keyLength ) var obj = nameArr[i] + d;
+    else if (i> 2+keyLength) { var obj = nameArr[i] + d;
+    }
+        combineArr.push(obj);
+    })
+    var globalArr = [];
+    data.forEach(function(d, i) {
+        var localObj = _.object(combineArr, d);
+        globalArr.push(localObj);
+    })
+    return globalArr;
+
+};
+  getArr=function(obj, k, view) { //used on view.typeinfo to get an array of property value of the propertyName 'name'
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getArr(obj[i], k, view));
+        } else if (i.contains(k) == true) {
+            if (k == "name") {
+                objects.push(cutTableName(obj[i], view));
+            } else
+                objects.push(obj[i]);
+        }
+    }
+    return objects;
+};
+  cutTableName=function(stringText, view) {
+
+    var uniTable = (view.data.jsonClass === "DataAdhocTable") ? view.data.fields[0].table + "." : null;
+    var colm = (uniTable == null) ? stringText : stringText.split(uniTable)[1];
+    return colm;
+};
+  hexToModel=function(data) {
+    var ReadArray, columnNameArray, model_keyArray, objKey;
+    ReadArray = [];
+  console.log("before data[0]",JSON.stringify(data[0]));
+    objKey = Object.keys(data[0]);
+  var model_keyArray=[];
+  var contentInfoArray=[];
+  var contentColumnArray=[];
+  var levelInfoArray=[];
+  var levelColumnArray=[];
+     objKey.forEach(function(key) {
+        var columnNameObj, model_keyObj;
+  console.log("before objKey",key);
+  if (key.contains("#[") === true) { // belongs to content
+            model_keyObj = key.replace(/.*\[|\]/g, "");
+            columnNameObj = key.replace(/\#.*/, "");
+ 			contentInfoArray.push(model_keyObj);
+  			contentColumnArray.push(columnNameObj);
+  } else if (key.contains("$[")=== true) { //belongs to Level
+  			 model_keyObj = key.replace(/.*\[|\]/g, "");
+            columnNameObj = key.replace(/\$.*/, "");
+  			levelInfoArray.push(model_keyObj);
+  			levelColumnArray.push(columnNameObj);
+  } 
+      
+    });
+  console.log("before model_keyArray",model_keyArray);
+  console.log("before columnNameArray",columnNameArray);
+    data.forEach(function(d, i) {
+       var  Model, ReadObj, Value, nestingLevelArr, propertyName;
+  		var contentArr=[];
+   		
+        ReadObj = {};
+   		nestingLevelArr =[];
+     
+  if(i===0) console.log("d!!",JSON.stringify(d));
+        for (propertyName in d) {
+                  if (propertyName.contains("$[") === true) {
+                  nestingLevelArr.push(d[propertyName]);
+            }
+       if (propertyName.contains("#[") === true) {
+                  contentArr.push(d[propertyName]);
+            }
+        }
+            var objPush;
+            for (propertyName in d) {
+                        objPush = {
+                        Item_PK: d['Item_PK|'],
+ 					    Description:d['Description|'],
+                        ColorBasis:d['ColorBasis|'],
+  						ContentInfo:[],LevelInfo:[]
+                    };
+                    _.each(contentArr,function(d, i) {
+                        propertyName = "content#" + (i + 1);
+                        objPush[propertyName] = d;
+ 					 var contentObj={'id':contentInfoArray[i],'columnName':contentColumnArray[i]};
+  						objPush['ContentInfo'].push(contentObj);
+                    });
+     				_.each(nestingLevelArr,function(d, i) {
+                        propertyName = "level#" + (i + 1);
+                        objPush[propertyName] = d;
+   					var infoObj={'id':levelInfoArray[i],'columnName':levelColumnArray[i]};
+  						objPush['LevelInfo'].push(infoObj);
+                    });
+                   
+                
+            }
+  			ReadArray.push(objPush);
+        
+    });
+    return ReadArray;
+};
+  }
+    function sum(numbers) {
+    return _.reduce(numbers, function(result, current) {
+        return result + parseFloat(current);
+    }, 0);
+}
+</div>
+========
