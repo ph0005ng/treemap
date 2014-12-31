@@ -950,19 +950,51 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8045484d',endC
 }
 data();
   */
+  //Preconfig Settings
+    var cfgoptions = view.typeinfo;
+	var chart,filterInitation,JsonProcess;
+  var m = [cfgoptions.marginB, cfgoptions.marginL, cfgoptions.marginT, cfgoptions.marginR];
+            var chartWidth = cfgoptions.width - m[1] - m[3];
+  console.log("chartWidth",chartWidth);
+            var chartHeight = cfgoptions.height - m[0] - m[2];
+  var viewId=view.id;          
+  window['treemap_'+viewId]={};
+  window['treemap_'+viewId].node={};
+  var xscale = d3.scale.linear().range([0, chartWidth]);
+  var yscale = d3.scale.linear().range([0, chartHeight]);
+  var color = d3.scale.category10();
+  var headerHeight = 20;
+  var headerColor = "#555555";
+  var transitionDuration = 500;
+    var treemap = d3.layout.treemap()
+        .round(false)
+        .size([chartWidth, chartHeight])
+        .sticky(true)
+        .value(function(d) {
+            return d.size;
+        });
+var formatValue; var prefix=d3.formatPrefix(view.typeinfo.prefixMagnitude);
+  eval(view.typeinfo.formatValue);
   
+  //browser Compatibility check
+   window.isIE=BrowserDetect.browser == 'Explorer';
+  
+  //-Data Processing 
   var rawData= ${data};
   var f=view.typeinfo.data.fields;
   //Inital debugFn() for data Processing 
-  var arrToHex,getArr,cutTableName,hexToModel;
+  var arrToHex,getArr,cutTableName,hexToModel,insertLineBreakContent;
   debugFn();
+  
+  var numberOfLevel;
   console.log("rawData",JSON.stringify(rawData));
   if (view.data.jsonClass != "DataEmbedded"){
   var data1=arrToHex(rawData,f,view);}
    
     if (view.data.jsonClass === "DataEmbedded"){
   var data2=[{"Item_PK":1,"Description":"Watermelon","ColorBasis":259,
-  "ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":2000},{"Item_PK":2,"Description":"Apple","ColorBasis":375,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":25000},{"Item_PK":3,"Description":"Onion","ColorBasis":894,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":10500},{"Item_PK":4,"Description":"Carrot","ColorBasis":417,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":20410},{"Item_PK":5,"Description":"Pear","ColorBasis":657,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":6800},{"Item_PK":6,"Description":"Keyboard","ColorBasis":517,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":7800},{"Item_PK":7,"Description":"Mouse","ColorBasis":789,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":1800},{"Item_PK":8,"Description":"Desktop","ColorBasis":841,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":3570},{"Item_PK":9,"Description":"Laptop","ColorBasis":985,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":15000},{"Item_PK":10,"Description":"Tablet","ColorBasis":657,"ContentInfo":[{"id":"Size","columnName":"SKU"}],"LevelInfo":[{"id":"1","columnName":"Size"}],"level#1":18000}];
+  "ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],
+  "content#1":2000,"level#1":"Thailand"},{"Item_PK":2,"Description":"Apple","ColorBasis":375,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":25000,"level#1":"Thailand"},{"Item_PK":3,"Description":"Onion","ColorBasis":894,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":10500,"level#1":"Malaysia"},{"Item_PK":4,"Description":"Carrot","ColorBasis":417,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":20410,"level#1":"Malaysia"},{"Item_PK":5,"Description":"Pear","ColorBasis":657,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":6800,"level#1":"Malaysia"},{"Item_PK":6,"Description":"Keyboard","ColorBasis":517,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":7800,"level#1":"Japan"},{"Item_PK":7,"Description":"Mouse","ColorBasis":789,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":1800,"level#1":"Japan"},{"Item_PK":8,"Description":"Desktop","ColorBasis":841,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":3570,"level#1":"USA"},{"Item_PK":9,"Description":"Laptop","ColorBasis":985,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":15000,"level#1":"USA"},{"Item_PK":10,"Description":"Tablet","ColorBasis":657,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":18000,"level#1":"USA"}];
   }else var data2 =hexToModel(data1);
   console.log('data2',JSON.stringify(data2));
  
@@ -974,27 +1006,72 @@ data();
   					ColorBasis:value[0].ColorBasis,
   					ContentInfo:value[0].ContentInfo,
   					LevelInfo:value[0].LevelInfo,
-  					Name:key
+  					name:key
   										};
   for (var propertyName in value[0]) {
-   console.log("include",propertyName);
-  if (_.str.include(propertyName,"level#")) {
+  
  
+  if (_.str.include(propertyName,"content#")) {
   obj[propertyName]=sum(_.pluck(value, propertyName));
-  }
+  } else if  (_.str.include(propertyName,"level#")) {
+ var i=1;
+  obj[propertyName]= value[0][propertyName];
+  numberOfLevel=i;
+  i++;
+  } 
+  
   }
 					return obj;
 					
 					}).value();
 
 console.log("groupResult",JSON.stringify(groupResult));
+  var nest=d3.nest();
+  console.log("numberOfLevel: ",numberOfLevel);
+  for (var u=0; u < numberOfLevel; u++){
+  console.log("before key: ",u);
+  nest.key(function(d) {
+  var levelProp='level#'+u;
+  console.log("before levelProp",levelProp);
+  console.log("before d",d);
+  return d[levelProp];
+  });
+  }
+	nest=nest.entries(groupResult);
 
+  var jsonstr = JSON.stringify(nest);
+ console.log("jsonStr",jsonstr);
+  var new_jsonstr = jsonstr.replace('"key"','"name"','gi');
+   var new_jsonstr2 = new_jsonstr.replace('"values"','"children"','gi');
+  
+  var nest_1 = JSON.parse(new_jsonstr2);
+  console.log("nest_1",JSON.stringify(nest_1));
+  var nest_2 ={"name":"14 Stock Groupings", "children": nest_1};
+//-end Data Processing
 
-
-
-
+   //render Chart
+  chart = treeMapChart()
+  .height(chartHeight)
+  .width(chartWidth)
+  .xscale(xscale)
+  .yscale(yscale)
+  .color(color)
+  .headerHeight(headerHeight)
+  .headerColor(headerColor)
+  .transitionDuration(transitionDuration)
+  .viewId(viewId)
+  .root(nest_2)
+  .insertLineBreakContent(insertLineBreakContent)
+  .treemap(treemap)
+  .formatValue(formatValue);
+  d3.select("#${id}").datum([]).call(chart);
+  
+  
+  
+  
   
   function debugFn(){
+  
    arrToHex =function(data, f, view) { //used together with operations
  	 var keyLength = f.keys.length;
       var keyLArr = d3.range(1, keyLength+1);
@@ -1010,7 +1087,7 @@ console.log("groupResult",JSON.stringify(groupResult));
   } else  {
   _.each(keyLArr,function(m,n) {
   processedIdArr.push("$["+m+"]"); //for Levels
-  });
+    });
   processedIdArr.push("#[" + d + "]"); //for contents
 
   }
@@ -1130,6 +1207,19 @@ console.log("groupResult",JSON.stringify(groupResult));
         
     });
     return ReadArray;
+};
+  insertLineBreakContent = function (d) {
+    var el = d3.select(this);
+    var words = [];
+  words.push(d.name,d.Description,(d.size)? "size: "+d.size : null);
+  
+    el.text('');
+	
+    for (var i = 0; i < words.length; i++) {
+        var tspan = el.append('tspan').text(words[i]);
+        if (i > 0)
+            tspan.attr('x', 0).attr('dy', '15');
+    }
 };
   }
     function sum(numbers) {
