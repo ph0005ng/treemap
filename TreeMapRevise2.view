@@ -1211,8 +1211,12 @@ console.log("groupResult",JSON.stringify(groupResult));
   insertLineBreakContent = function (d) {
     var el = d3.select(this);
     var words = [];
-  words.push(d.name,d.Description,(d.size)? "size: "+d.size : null);
-  
+  words.push(d.name,d.Description);
+   var contentSize=_.size(d.contentInfo);
+  _.each(contentSize,function(m,n) {
+  var i=n+1;
+  words.push(d.contentInfo[n]+": "+d['content#'+i]);
+  });
     el.text('');
 	
     for (var i = 0; i < words.length; i++) {
