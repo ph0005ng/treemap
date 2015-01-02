@@ -971,7 +971,7 @@ data();
         .size([chartWidth, chartHeight])
         .sticky(true)
         .value(function(d) {
-            return d.size;
+            return d['content#1'];
         });
 var formatValue; var prefix=d3.formatPrefix(view.typeinfo.prefixMagnitude);
   eval(view.typeinfo.formatValue);
@@ -1211,12 +1211,18 @@ console.log("groupResult",JSON.stringify(groupResult));
   insertLineBreakContent = function (d) {
     var el = d3.select(this);
     var words = [];
-  words.push(d.name,d.Description);
-   var contentSize=_.size(d.contentInfo);
-  _.each(contentSize,function(m,n) {
-  var i=n+1;
-  words.push(d.contentInfo[n]+": "+d['content#'+i]);
-  });
+	console.log("before insertLineBreakContent",d);
+  words.push(d.name);
+  if (typeof d.Description !='undefined') {
+  words.push(d.Description);
+  }
+   var contentSize=_.size(d.ContentInfo);
+   console.log("before contentSize",contentSize);
+	if(contentSize > 0){_.each(d.ContentInfo,function(m,n) {
+  var j=n+1;
+  words.push(m.columnName+": "+d['content#'+j]);
+  });}
+  console.log("before words",words);
     el.text('');
 	
     for (var i = 0; i < words.length; i++) {

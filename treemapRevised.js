@@ -23,7 +23,19 @@ function treeMapChart() {
 		formatValue=function(val,prefix) {return ' '+d3.round(prefix.scale(val),2)+prefix.symbol;},
 		root={},
 		treemap={},
-		viewId="preview";
+		viewId="preview",
+		insertToolTipContent=function(d) {
+			var header = "<b>"+d.name+"</b><hr>Description: "+d.Description+"<br>";
+			   var contentSize=_.size(d.ContentInfo);
+			   var contentList=[];
+				if(contentSize > 0){_.each(d.ContentInfo,function(m,n) {
+			  var j=n+1;
+			  contentList.push(m.columnName+": "+d['content#'+j]);
+			  
+			  			  });}
+			  var contentHTML = header+'<br>'+ contentList.join('</br><br>') +'</br';
+			return contentHTML
+			};
 		
 
 	// derived chart options
@@ -53,7 +65,8 @@ function treeMapChart() {
 			 defs = svg.append("defs");
 			debugFn();
 		filterInitation(defs);
-		JsonProcess(treemap,treeChart,root,height,width,headerHeight,headerColor,color,insertLineBreakContent,xscale,yscale,formatValue,transitionDuration,viewId);
+		console.log("before root",JSON.stringify(root));
+		JsonProcess(treemap,treeChart,root,height,width,headerHeight,headerColor,color,insertLineBreakContent,xscale,yscale,formatValue,transitionDuration,viewId,insertToolTipContent);
 	
 			});
 			
@@ -131,81 +144,56 @@ function treeMapChart() {
 	viewId=value;
 	return chart;
 	};
+	chart.insertToolTipContent= function(value) {
+	if (!arguments.length) return insertToolTipContent;	
+	insertToolTipContent=value;
+	return chart;
+	};
 	return chart;
 	
 	// temp varibale to store svg element color on mouse over
 	var tempColor;
 	
 	
-}
+
 
 //--------------------------------------------------------------------------------------------
 // Helper functions
 //--------------------------------------------------------------------------------------------
-	function mouseover(d, i) {
-	  this.parentNode.appendChild(this); // workaround for bringing elements to the front (ie z-index)
+	function mouseover(d, i,insertToolTipContent,target) {
+	 /*this.parentNode.appendChild(this); // workaround for bringing elements to the front (ie z-index)
 				    d3.select(this)
                     .attr("filter", "url(#outerDropShadow)")
                     .select(".background")
                     .style("stroke", "#000000");
+					*/
+					target.parentNode.appendChild(target); // workaround for bringing elements to the front (ie z-index)
+				    d3.select(target)
+                    .attr("filter", "url(#outerDropShadow)")
+                    .select(".background")
+                    .style("stroke", "#000000");
 					var prefix=d3.formatPrefix(1000);
-					var content = "<b>" + d.Category + "</b><hr>"
+				/*	var content = "<b>" + d.Category + "</b><hr>"
 			+ "Name: " + d.name + "<br>"
 			+ "Description: " + d.Description + "<br>"
-			+ "Size: " + formatValue(d.size,prefix) + "<br>"; 
-		d3.select(".tooltip").style("visibility", "visible")
+			+ "Size: " + formatValue(d.size,prefix) + "<br>"; */
+			
+			var contentHTML=insertToolTipContent(d);
+			d3.select(".tooltip_"+viewId).style("visibility", "visible")
 			.style("top", (d3.event.pageY-35)+"px")
 			.style("left", d3.event.pageX+"px")
-			.html(content);
+			.html(contentHTML);
 	}
-	function mouseout() {
+	
+	function mouseout() { // not used
 	  d3.select(this)
                     .attr("filter", "")
                     .select(".background")
                     .style("stroke", "#FFFFFF");
 			d3.select(".tooltip").style("visibility", "hidden");
 	}
-	
-	
-  function size(d) {
-        return d.size;
-    }
-
-
-    function count(d) {
-        return 1;
-    }
-
-
-    //and another one
-    function textHeight(d) {
-        var ky = chartHeight / d.dy;
-        yscale.domain([d.y, d.y + d.dy]);
-        return (ky * d.dy) / headerHeight;
-    }
-
-
-    function getRGBComponents (color) {
-        var r = color.substring(1, 3);
-        var g = color.substring(3, 5);
-        var b = color.substring(5, 7);
-        return {
-            R: parseInt(r, 16),
-            G: parseInt(g, 16),
-            B: parseInt(b, 16)
-        };
-    }
-
-
-    function idealTextColor (bgColor) {
-        var nThreshold = 105;
-        var components = getRGBComponents(bgColor);
-        var bgDelta = (components.R * 0.299) + (components.G * 0.587) + (components.B * 0.114);
-        return ((255 - bgDelta) < nThreshold) ? "#000000" : "#ffffff";
-    }
-
-
-    function zoom(d,treeChart,root,height,width,headerHeight,headerColor,color,insertLinebreaks,xscale,yscale,formatValue,transitionDuration,viewId) {
+	//-end of treeMapChart
+	    function zoom(d,treeChart,root,height,width,headerHeight,headerColor,color,insertLinebreaks,xscale,yscale,formatValue,transitionDuration,viewId) {
         this.treemap
             .padding([headerHeight/(height/d.dy), 0, 0, 0])
             .nodes(d);
@@ -322,8 +310,9 @@ filterInitation = function(defs){
         .attr("mode", "normal");
 
 };
-JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerColor,color,insertLinebreaks,xscale,yscale,formatValue,transitionDuration,viewId){
+JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerColor,color,insertLinebreaks,xscale,yscale,formatValue,transitionDuration,viewId,insertToolTipContent){
 		var nodes = treemap.nodes(root);
+		
         var children = nodes.filter(function(d) {
             return !d.children;
         });
@@ -331,7 +320,8 @@ JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerCol
             return d.children;
         });
  window['treemap_'+viewId].node=_.clone(root);
-
+ //window['treemap_'+viewId].node=_.clone(nodes);
+ 
         // create parent cells
         var parentCells = treeChart.selectAll("g.cell.parent")
             .data(parents, function(d) {
@@ -361,7 +351,7 @@ JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerCol
 				// Tooltip
 			var tooltip = d3.select("body")
 				.append("div")
-				.attr("class", "tooltip")
+				.attr("class", "tooltip_"+viewId)
 				.style("font", "Arial black;")
 				.style("font-size", "11px")
 				.style("margin", "8px")
@@ -416,27 +406,13 @@ JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerCol
                 zoom(m,treeChart,root,height,width,headerHeight,headerColor,color,insertLinebreaks,xscale,yscale,formatValue,transitionDuration,viewId);
 				//zoom1(m);
             })
-            .on("mouseover", function(d,i) {
-                this.parentNode.appendChild(this); // workaround for bringing elements to the front (ie z-index)
-				    d3.select(this)
-                    .attr("filter", "url(#outerDropShadow)")
-                    .select(".background")
-                    .style("stroke", "#000000");
-					var prefix=d3.formatPrefix(1000);
-					var content = "<b>" + d.Category + "</b><hr>"
-			+ "Name: " + d.name + "<br>"
-			+ "Description: " + d.Description + "<br>"
-			+ "Size: " + formatValue(d.size,prefix) + "<br>"; 
-		d3.select(".tooltip").style("visibility", "visible")
-			.style("top", (d3.event.pageY-35)+"px")
-			.style("left", d3.event.pageX+"px")
-			.html(content);
-            })
+            .on("mouseover", function (d,i) { var target=this;mouseover(d,i,insertToolTipContent,target);})
             .on("mouseout", function() {
                 d3.select(this)
                     .attr("filter", "")
                     .select(".background")
                     .style("stroke", "#FFFFFF");
+			d3.select(".tooltip_"+viewId).style("visibility", "hidden");
             });
         childEnterTransition.append("rect")
             .classed("background", true)
@@ -514,3 +490,43 @@ this.treemap=treemap;
 };
 
 }
+	}
+	
+  function size(d) {
+        return d.size;
+    }
+
+
+    function count(d) {
+        return 1;
+    }
+
+
+    //and another one
+    function textHeight(d) {
+        var ky = chartHeight / d.dy;
+        yscale.domain([d.y, d.y + d.dy]);
+        return (ky * d.dy) / headerHeight;
+    }
+
+
+    function getRGBComponents (color) {
+        var r = color.substring(1, 3);
+        var g = color.substring(3, 5);
+        var b = color.substring(5, 7);
+        return {
+            R: parseInt(r, 16),
+            G: parseInt(g, 16),
+            B: parseInt(b, 16)
+        };
+    }
+
+
+    function idealTextColor (bgColor) {
+        var nThreshold = 105;
+        var components = getRGBComponents(bgColor);
+        var bgDelta = (components.R * 0.299) + (components.G * 0.587) + (components.B * 0.114);
+        return ((255 - bgDelta) < nThreshold) ? "#000000" : "#ffffff";
+    }
+
+
