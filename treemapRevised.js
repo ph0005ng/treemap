@@ -1,40 +1,53 @@
 function treeMapChart() {
 	// configurable chart options
-	var insertLineBreakContent=function (d) {
-		var el = d3.select(this);
-		var words = [];
-		words.push(d.name,d.Description,(d.size)? "size: "+d.size : null);
-		el.text('');
-		for (var i = 0; i < words.length; i++) {
-			var tspan = el.append('tspan').text(words[i]);
-		if (i > 0)
-		tspan.attr('x', 0).attr('dy', '15');
-		}
-		};
 		
 		var height = 700,
 		width=700,	
-		color=d3.scale.category10(),
+		color=d3.scale.category20(),
 		headerHeight=20,
 		headerColor="#555555",
 		transitionDuration= 500,
-		
-		prefix=d3.formatPrefix(1000),
-		formatValue=function(val,prefix) {return ' '+d3.round(prefix.scale(val),2)+prefix.symbol;},
-		root={},
+		labelHeight=100,
+		labelWidth=200,
+		prefix=d3.formatPrefix(1000);
+		var formatValue={'Size':function(val) {return ' '+d3.round(prefix('Size').scale(val),2)+prefix('Size').symbol;}};
+		var root={},
 		treemap={},
 		viewId="preview",
-		insertToolTipContent=function(d) {
+		insertLineBreakContent = function (d,formatValue,target) {
+			var el = d3.select(target);
+			var words = [];
+			console.log("before insertLineBreakContent",d);
+		  words.push(d.name);
+		  if (typeof d.Description !='undefined') {
+		  words.push(d.Description);
+		  }
+		   var contentSize=_.size(d.ContentInfo);
+		   console.log("before contentSize",contentSize);
+			if(contentSize > 0){_.each(d.ContentInfo,function(m,n) {
+		  var j=n+1;
+		  words.push(m.columnName+": "+formatValue[m.id](d['content#'+j]));
+		  });}
+		  console.log("before words",words);
+			el.text('');
+			
+			for (var i = 0; i < words.length; i++) {
+				var tspan = el.append('tspan').text(words[i]);
+				if (i > 0)
+					tspan.attr('x', 0).attr('dy', '15');
+			}
+		},
+		insertToolTipContent=function(d,formatValue) {
 			var header = "<b>"+d.name+"</b><hr>Description: "+d.Description+"<br>";
 			   var contentSize=_.size(d.ContentInfo);
 			   var contentList=[];
 				if(contentSize > 0){_.each(d.ContentInfo,function(m,n) {
 			  var j=n+1;
-			  contentList.push(m.columnName+": "+d['content#'+j]);
+			  contentList.push(m.id+": "+ formatValue[m.id](d['content#'+j]));
 			  
 			  			  });}
 			  var contentHTML = header+'<br>'+ contentList.join('</br><br>') +'</br';
-			return contentHTML
+			return contentHTML;
 			};
 		
 
@@ -83,7 +96,16 @@ function treeMapChart() {
 		width = value;
 		return chart;
 	};
-
+	chart.labelWidth = function(value) {
+		if (!arguments.length) return labelWidth;
+		labelWidth = value;
+		return chart;
+	};
+	chart.labelHeight = function(value) {
+		if (!arguments.length) return labelHeight;
+		labelHeight = value;
+		return chart;
+	};
 	chart.color = function(value) {
 	if (!arguments.length) return color;	
 	color=value;
@@ -178,7 +200,7 @@ function treeMapChart() {
 			+ "Description: " + d.Description + "<br>"
 			+ "Size: " + formatValue(d.size,prefix) + "<br>"; */
 			
-			var contentHTML=insertToolTipContent(d);
+			var contentHTML=insertToolTipContent(d,formatValue);
 			d3.select(".tooltip_"+viewId).style("visibility", "visible")
 			.style("top", (d3.event.pageY-35)+"px")
 			.style("left", d3.event.pageX+"px")
@@ -227,7 +249,8 @@ function treeMapChart() {
                         })
                         .selectAll(".foreignObject .labelbody div svg .label")
                         .style("fill", function(d) {
-                            return idealTextColor(color(d.parent.name));
+						console.log("before d.parent.name",d.parent);
+                            return idealTextColor(color(d.ColorBasis));
                         }).style({'font-size':'20px','x':'20px'})
 						.selectAll("tspan").attr("x",'20').attr("dy",'20');
 
@@ -247,7 +270,8 @@ function treeMapChart() {
 							
                             .select(".foreignObject")
                             .style("display", "")
-                    }
+                   }
+				    console.log("before end in each");
                 }
             });
 
@@ -258,7 +282,7 @@ function treeMapChart() {
             .attr("height", function(d) {
                 return d.children ? headerHeight: Math.max(0.01, ky * d.dy);
             })
-            .select(".labelbody .label").each(insertLinebreaks);
+            .select(".labelbody .label").each(function(d){ var target=this;insertLineBreakContent(d,formatValue,target);});
 
         // update the width/height of the rects
         zoomTransition.select("rect")
@@ -269,7 +293,7 @@ function treeMapChart() {
                 return d.children ? headerHeight : Math.max(0.01, ky * d.dy);
             })
             .style("fill", function(d) {
-                return d.children ? headerColor : color(d.parent.name);
+                return d.children ? headerColor : color(d.ColorBasis);
             });
 console.log("node declaration,d",d);
         window['treemap_'+viewId].node = _.clone(d);
@@ -310,7 +334,7 @@ filterInitation = function(defs){
         .attr("mode", "normal");
 
 };
-JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerColor,color,insertLinebreaks,xscale,yscale,formatValue,transitionDuration,viewId,insertToolTipContent){
+JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerColor,color,insertLineBreakContent,xscale,yscale,formatValue,transitionDuration,viewId,insertToolTipContent){
 		var nodes = treemap.nodes(root);
 		
         var children = nodes.filter(function(d) {
@@ -332,7 +356,7 @@ JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerCol
             .attr("class", "cell parent")
             .on("click", function(d) {
 			this.treemap=treemap;
-                zoom(d,treeChart,root,height,width,headerHeight,headerColor,color,insertLinebreaks,xscale,yscale,formatValue,transitionDuration,viewId);
+                zoom(d,treeChart,root,height,width,headerHeight,headerColor,color,insertLineBreakContent,xscale,yscale,formatValue,transitionDuration,viewId);
 				//zoom1(d);
             });
         parentEnterTransition.append("rect")
@@ -403,7 +427,7 @@ JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerCol
 			console.log("current node",window['treemap_'+viewId].node);
 			var m=(_.isEqual(window['treemap_'+viewId].node,d.parent) ? root : d.parent);
 			this.treemap=treemap;
-                zoom(m,treeChart,root,height,width,headerHeight,headerColor,color,insertLinebreaks,xscale,yscale,formatValue,transitionDuration,viewId);
+                zoom(m,treeChart,root,height,width,headerHeight,headerColor,color,insertLineBreakContent,xscale,yscale,formatValue,transitionDuration,viewId);
 				//zoom1(m);
             })
             .on("mouseover", function (d,i) { var target=this;mouseover(d,i,insertToolTipContent,target);})
@@ -417,7 +441,7 @@ JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerCol
         childEnterTransition.append("rect")
             .classed("background", true)
             .style("fill", function(d) {
-                return color(d.parent.name);
+                return color(d.ColorBasis);
             });
   childEnterTransition.append('foreignObject')
             .attr("class", "foreignObject")
@@ -430,10 +454,10 @@ JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerCol
             .append("xhtml:div")
             .attr("class", "labelbody")
             .append("div")
-			.append("svg")
+			.append("svg").attr("height",labelHeight).attr("width",labelWidth)
 			.append("text")
             .attr("class", "label")
-			.attr("y",15).each(insertLinebreaks);
+			.attr("y",15).each(function(d){ var target=this;insertLineBreakContent(d,formatValue,target);});
 		
 
         if (window.isIE) {
@@ -458,7 +482,7 @@ JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerCol
                 return d.dy;
             })
             .style("fill", function(d) {
-                return color(d.parent.name);
+                return color(d.ColorBasis);
             });
         childUpdateTransition.select(".foreignObject")
             .attr("width", function(d) {
@@ -479,11 +503,11 @@ JsonProcess= function(treemap,treeChart,root,height,width,headerHeight,headerCol
             treemap.value(this.value == "size" ? size : count)
                 .nodes(root);
 				this.treemap=treemap;
-           zoom(window['treemap_'+viewId].node,treeChart,root,height,width,headerHeight,headerColor,color,insertLinebreaks,xscale,yscale,formatValue,transitionDuration,viewId);
+           zoom(window['treemap_'+viewId].node,treeChart,root,height,width,headerHeight,headerColor,color,insertLineBreakContent,xscale,yscale,formatValue,transitionDuration,viewId);
 			//zoom1(node);
         });
 this.treemap=treemap;
-  zoom(window['treemap_'+viewId].node,treeChart,root,height,width,headerHeight,headerColor,color,insertLinebreaks,xscale,yscale,formatValue,transitionDuration,viewId);
+  zoom(window['treemap_'+viewId].node,treeChart,root,height,width,headerHeight,headerColor,color,insertLineBreakContent,xscale,yscale,formatValue,transitionDuration,viewId);
 		//zoom1(node);
 
 
