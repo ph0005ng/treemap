@@ -626,7 +626,8 @@
       "title":"14 Stock Group",
       "prefixMagnitude":"prefixMagnitude={'Size':1000}",
       "formatValue":"formatValue={'Size':function(val) {return ' '+d3.round(prefix('Size').scale(val),2)+prefix('Size').symbol;}}",
-      "content":"hi"
+      "content":"hi",
+      "cellName":"level#1"
     }
   },
   "includes":[
@@ -725,6 +726,48 @@
       "value":"${typeinfo.data.colorBasisCol}"
     }]
   },{
+      "jsonClass":"Row",
+      "cols":[{
+        "jsonClass":"Label",
+        "id":"typeinfo-cellName-label",
+        "type":"label",
+        "text":"Cell Name"
+      },{
+        "jsonClass":"Select",
+        "id":"typeinfo-cellName",
+        "type":"select",
+        "value":"${typeinfo.cellName}",
+        "options":[{
+          "jsonClass":"Option",
+          "text":"content#1",
+          "value":"content#1"
+        },{
+          "jsonClass":"Option",
+          "text":"content#2",
+          "value":"content#2"
+        },{
+          "jsonClass":"Option",
+          "text":"content#3",
+          "value":"content#3"
+        },{
+          "jsonClass":"Option",
+          "text":"level#1",
+          "value":"level#1"
+        },{
+          "jsonClass":"Option",
+          "text":"level#2",
+          "value":"level#2"
+        },{
+          "jsonClass":"Option",
+          "text":"level#3",
+          "value":"level#3"
+        },{
+          "jsonClass":"Option",
+          "text":"Item_PK",
+          "value":"Item_PK"
+        }]
+      }]
+    },{
       "jsonClass":"Row",
       "cols":[{
         "jsonClass":"Label",
@@ -928,11 +971,8 @@ elx.bundle.type.TreeMapRevise2 = {
 #${id}{overflow:hidden;margin:0;font-size:12px;font-family:"Helvetica Neue",Helvetica}.footer{z-index:1;display:block;font-size:26px;font-weight:200;text-shadow:0 1px 0 #fff}svg{overflow:hidden}rect{pointer-events:all;cursor:pointer;stroke:#EEE}.chart{display:block;margin:auto}.parent .label{color:#FFF;text-shadow:1px 1px 1px rgba(0,0,0,0.3);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,0.3);-moz-text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.labelbody{background:transparent}.label{margin:2px;white-space:pre;overflow:hidden;text-overflow:ellipsis;text-shadow:1px 1px 1px rgba(0,0,0,0.3);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,0.3);-moz-text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.child .label{white-space:pre-wrap;text-align:center;text-overflow:ellipsis}.cell{font-size:11px;cursor:pointer}
 
 </style>
-<div class="footer">
-    <select>
-        <option value="size">Size</option>
-        <option value="count">Count</option>
-    </select>
+
+<div class="header_${id}">
 </div>
 <div id="${id}"></div>
 
@@ -981,6 +1021,7 @@ data();
               var chartHeight = cfgoptions.height - m[0] - m[2];
 	var labelWidth=cfgoptions.labelWidth;
 	var labelHeight=cfgoptions.labelHeight;
+	var cellName=cfgoptions.cellName;
   var viewId=view.id;          
   window['treemap_'+viewId]={};
   window['treemap_'+viewId].node={};
@@ -990,23 +1031,19 @@ data();
   var headerHeight = 20;
   var headerColor = "#555555";
   var transitionDuration = 500;
-    var treemap = d3.layout.treemap()
-        .round(false)
-        .size([chartWidth, chartHeight])
-        .sticky(true)
-        .value(function(d) {
-            return d['content#1'];
-        });
+  
  var prefixMagnitude;
   eval(view.typeinfo.prefixMagnitude);
   var prefix=function(Col) {return d3.formatPrefix(prefixMagnitude[Col]);};
 var formatValue; 
   eval(view.typeinfo.formatValue);
-  console.log("before formatValue",formatValue);
-  
+   var contentSizeHex=0; //used in 'header' selection
+   
   //browser Compatibility check
    window.isIE=BrowserDetect.browser == 'Explorer';
-  
+ 
+
+
   //-Data Processing 
   var rawData= ${data};
   var f=view.typeinfo.data.fields;
@@ -1019,6 +1056,7 @@ var formatValue;
   if (view.data.jsonClass != "DataEmbedded"){
   var data1=arrToHex(rawData,f,view);}
    
+   
     if (view.data.jsonClass === "DataEmbedded"){
   var data2=[{"Item_PK":1,"Description":"Watermelon","ColorBasis":259,
   "ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],
@@ -1026,6 +1064,7 @@ var formatValue;
   }else var data2 =hexToModel(data1);
   console.log('data2',JSON.stringify(data2));
  
+	selectBoxFn(data2[0].ContentInfo); // append selectBox
   var numberOfLevelIndex=0; //count the numberOfLevel
   var groupColorBasis=0;
   var groupResult=_.chain(data2).groupBy("Item_PK")
@@ -1036,7 +1075,7 @@ var formatValue;
   					ColorBasis:value[0].ColorBasis,
   					ContentInfo:value[0].ContentInfo,
   					LevelInfo:value[0].LevelInfo,
-  					name:key
+  					name:value[0][cellName]
   										};
   
   for (var propertyName in value[0]) {
@@ -1058,8 +1097,6 @@ var formatValue;
 
 console.log("groupResult",JSON.stringify(groupResult));
   var nest=d3.nest();
-  console.log("before uiIndex",numberOfLevelIndex);
-
     _.each(_.range(1,numberOfLevelIndex+1),function(m,n) {
   var levelProp='level#'+m;
   nest.key(function(d){
@@ -1079,6 +1116,16 @@ console.log("groupResult",JSON.stringify(groupResult));
   var nest_2 ={"name":cfgoptions.title, "children": nest_1};
 //-end Data Processing
 
+//Initialize TreeMap
+
+    var treemap = d3.layout.treemap()
+        .round(false)
+        .size([chartWidth, chartHeight])
+        .sticky(true)
+        .value(function(d) {
+            return d['content#1'];
+        });
+	
    //render Chart
   chart = treeMapChart()
   .height(chartHeight)
@@ -1099,9 +1146,7 @@ console.log("groupResult",JSON.stringify(groupResult));
   .formatValue(formatValue);
   d3.select("#${id}").datum([]).call(chart);
   
-  
-  
-  
+
   
   function debugFn(){
   
@@ -1114,13 +1159,16 @@ console.log("groupResult",JSON.stringify(groupResult));
     console.log("idArr:", JSON.stringify(idArr));
     var processedIdArr = [];
   	var keyIdArr=[];
+	var idBool=true;
     _.each(idArr, function(d, i) {
-        if (d.contains("#{") == true || d.contains("|") == true) {
+	  if (d.contains("#{") == true || d.contains("|") == true) {
             processedIdArr.push(d);
   } else  {
-  _.each(keyLArr,function(m,n) {
-  processedIdArr.push("$["+m+"]"); //for Levels
+ if (idBool){  _.each(keyLArr,function(m,n) {
+  processedIdArr.push("$["+m+"]"); //for Levels, perform only once
     });
+	idBool=false;
+	}
   processedIdArr.push("#[" + d + "]"); //for contents
 
   }
@@ -1172,7 +1220,6 @@ console.log("groupResult",JSON.stringify(groupResult));
   hexToModel=function(data) {
     var ReadArray, columnNameArray, model_keyArray, objKey;
     ReadArray = [];
-  console.log("before data[0]",JSON.stringify(data[0]));
     objKey = Object.keys(data[0]);
   var model_keyArray=[];
   var contentInfoArray=[];
@@ -1181,7 +1228,6 @@ console.log("groupResult",JSON.stringify(groupResult));
   var levelColumnArray=[];
      objKey.forEach(function(key) {
         var columnNameObj, model_keyObj;
-  console.log("before objKey",key);
   if (key.contains("#[") === true) { // belongs to content
             model_keyObj = key.replace(/.*\[|\]/g, "");
             columnNameObj = key.replace(/\#.*/, "");
@@ -1195,8 +1241,7 @@ console.log("groupResult",JSON.stringify(groupResult));
   } 
       
     });
-  console.log("before model_keyArray",model_keyArray);
-  console.log("before columnNameArray",columnNameArray);
+
     data.forEach(function(d, i) {
        var  Model, ReadObj, Value, nestingLevelArr, propertyName;
   		var contentArr=[];
@@ -1210,8 +1255,9 @@ console.log("groupResult",JSON.stringify(groupResult));
                   nestingLevelArr.push(d[propertyName]);
             }
        if (propertyName.contains("#[") === true) {
+	   
                   contentArr.push(d[propertyName]);
-            }
+				            }
         }
             var objPush;
             for (propertyName in d) {
@@ -1244,20 +1290,16 @@ console.log("groupResult",JSON.stringify(groupResult));
   insertLineBreakContent = function (d,formatValue,target) {
     var el = d3.select(target);
     var words = [];
-	console.log("before insertLineBreakContent",d);
-  words.push(d.name);
+	  words.push(d.name);
   if (typeof d.Description !='undefined') {
   words.push(d.Description);
   }
    var contentSize=_.size(d.ContentInfo);
-   console.log("before contentSize",contentSize);
-	if(contentSize > 0){_.each(d.ContentInfo,function(m,n) {
+   	if(contentSize > 0){_.each(d.ContentInfo,function(m,n) {
   var j=n+1;
-  console.log("before m.id",m.id);
-  console.log("before formatValue undefined",formatValue);
   words.push(m.id+": "+formatValue[m.id](d['content#'+j]));
   });}
-  console.log("before words",words);
+ 
     el.text('');
 	
     for (var i = 0; i < words.length; i++) {
@@ -1265,6 +1307,13 @@ console.log("groupResult",JSON.stringify(groupResult));
         if (i > 0)
             tspan.attr('x', 0).attr('dy', '15');
     }
+};
+selectBoxFn=function(contentInfo) {
+  //d3 append into 'header' selection 
+  var selectBox=d3.select(".header_"+viewId).append("select").attr("class","select_"+viewId);
+  _.each(contentInfo,function(m,n){
+  selectBox.append("option").attr("value","content#"+(n+1)).html(m.id);
+  });
 };
   }
     function sum(numbers) {
