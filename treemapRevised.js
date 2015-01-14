@@ -224,16 +224,19 @@ function treeMapChart() {
         yscale.domain([d.y, d.y + d.dy]);
 
         if (window['treemap_'+viewId].node != level) {
-            if (window.isIE) {
+            if (window.isIE) { 
+			
                 treeChart.selectAll(".cell.child .foreignObject .labelbody .label")
                     .style("display", "none");
             } else {
                 treeChart.selectAll(".cell.child .foreignObject")
                     .style("display", "none");
             }
+			console.log("CSS IE");
         }
 
-        var zoomTransition = treeChart.selectAll("g.cell").transition().duration(transitionDuration)
+        var zoomTransition = treeChart.selectAll("g.cell")
+		 .attr("transform","translate(0,0)").transition().duration(transitionDuration)
             .attr("transform", function(d) {
                 return "translate(" + xscale(d.x) + "," + yscale(d.y) + ")";
             })
@@ -384,7 +387,7 @@ JsonProcess= function(treemap,treeChart,height,width,headerHeight,headerColor,co
 				.style("visibility", "hidden");
 				
         // update transition
-        var parentUpdateTransition = parentCells.transition().duration(transitionDuration);
+        var parentUpdateTransition = parentCells.attr("transform","translate(0,0)").transition().duration(transitionDuration);
         parentUpdateTransition.select(".cell")
             .attr("transform", function(d) {
                 return "translate(" + d.dx + "," + d.y + ")";
@@ -462,7 +465,7 @@ JsonProcess= function(treemap,treeChart,height,width,headerHeight,headerColor,co
         }
 
         // update transition
-        var childUpdateTransition = childrenCells.transition().duration(transitionDuration);
+        var childUpdateTransition = childrenCells.attr("transform","translate(0,0)").transition().duration(transitionDuration);
         childUpdateTransition.select(".cell")
             .attr("transform", function(d) {
                 return "translate(" + d.x  + "," + d.y + ")";

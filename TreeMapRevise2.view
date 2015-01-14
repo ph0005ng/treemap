@@ -626,8 +626,7 @@
       "title":"14 Stock Group",
       "prefixMagnitude":"prefixMagnitude={'Size':1000}",
       "formatValue":"formatValue={'Size':function(val) {return ' '+d3.round(prefix('Size').scale(val),2)+prefix('Size').symbol;}}",
-      "content":"hi",
-      "cellName":"level#1"
+       "cellName":"level#1"
     }
   },
   "includes":[
@@ -1041,9 +1040,19 @@ var formatValue;
    
   //browser Compatibility check
    window.isIE=BrowserDetect.browser == 'Explorer';
- 
-
-
+console.log("BrowserDetect",BrowserDetect.browser);
+  if (window.isIE){
+  CSSStyleDeclaration.prototype.getProperty = function(a) {
+					return this.getAttribute(a);
+				};
+			CSSStyleDeclaration.prototype.setProperty = function(a,b) {
+				return this.setAttribute(a,b);
+			}
+			CSSStyleDeclaration.prototype.removeProperty = function(a) {
+				return this.removeAttribute(a);
+			}
+  
+  }
   //-Data Processing 
   var rawData= ${data};
   var f=view.typeinfo.data.fields;
@@ -1161,7 +1170,7 @@ console.log("groupResult",JSON.stringify(groupResult));
   	var keyIdArr=[];
 	var idBool=true;
     _.each(idArr, function(d, i) {
-	  if (d.contains("#{") == true || d.contains("|") == true) {
+	  if (_.str.include(d,"#{") == true || _.str.include(d,"|") == true) {
             processedIdArr.push(d);
   } else  {
  if (idBool){  _.each(keyLArr,function(m,n) {
@@ -1202,7 +1211,7 @@ console.log("groupResult",JSON.stringify(groupResult));
         if (!obj.hasOwnProperty(i)) continue;
         if (typeof obj[i] == 'object') {
             objects = objects.concat(getArr(obj[i], k, view));
-        } else if (i.contains(k) == true) {
+        } else if ( _.str.include(i,k) == true) {
             if (k == "name") {
                 objects.push(cutTableName(obj[i], view));
             } else
@@ -1228,12 +1237,12 @@ console.log("groupResult",JSON.stringify(groupResult));
   var levelColumnArray=[];
      objKey.forEach(function(key) {
         var columnNameObj, model_keyObj;
-  if (key.contains("#[") === true) { // belongs to content
+  if (_.str.include(key,"#[") === true) { // belongs to content
             model_keyObj = key.replace(/.*\[|\]/g, "");
             columnNameObj = key.replace(/\#.*/, "");
  			contentInfoArray.push(model_keyObj);
   			contentColumnArray.push(columnNameObj);
-  } else if (key.contains("$[")=== true) { //belongs to Level
+  } else if (_.str.include(key,"$[")=== true) { //belongs to Level
   			 model_keyObj = key.replace(/.*\[|\]/g, "");
             columnNameObj = key.replace(/\$.*/, "");
   			levelInfoArray.push(model_keyObj);
@@ -1251,10 +1260,10 @@ console.log("groupResult",JSON.stringify(groupResult));
      
   if(i===0) console.log("d!!",JSON.stringify(d));
         for (propertyName in d) {
-                  if (propertyName.contains("$[") === true) {
+                  if (_.str.include(propertyName,"$[") === true) {
                   nestingLevelArr.push(d[propertyName]);
             }
-       if (propertyName.contains("#[") === true) {
+       if (_.str.include(propertyName,"#[") === true) {
 	   
                   contentArr.push(d[propertyName]);
 				            }
