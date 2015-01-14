@@ -387,7 +387,7 @@ JsonProcess= function(treemap,treeChart,height,width,headerHeight,headerColor,co
 				.style("visibility", "hidden");
 				
         // update transition
-        var parentUpdateTransition = parentCells.attr("transform","translate(0,0)").transition().duration(transitionDuration);
+        var parentUpdateTransition = parentCells.transition().duration(transitionDuration);
         parentUpdateTransition.select(".cell")
             .attr("transform", function(d) {
                 return "translate(" + d.dx + "," + d.y + ")";
@@ -465,7 +465,7 @@ JsonProcess= function(treemap,treeChart,height,width,headerHeight,headerColor,co
         }
 
         // update transition
-        var childUpdateTransition = childrenCells.attr("transform","translate(0,0)").transition().duration(transitionDuration);
+        var childUpdateTransition = childrenCells.transition().duration(transitionDuration);
         childUpdateTransition.select(".cell")
             .attr("transform", function(d) {
                 return "translate(" + d.x  + "," + d.y + ")";
