@@ -1054,23 +1054,29 @@ console.log("BrowserDetect",BrowserDetect.browser);
   
   }
   //-Data Processing 
-  var rawData= ${data};
-  var f=view.typeinfo.data.fields;
+   var f=view.typeinfo.data.fields;
   //Inital debugFn() for data Processing 
-  var arrToHex,getArr,cutTableName,hexToModel,insertLineBreakContent;
+  var arrToHex,extendArr,getArr,cutTableName,hexToModel,insertLineBreakContent;
   debugFn();
   
   var numberOfLevel;
   console.log("rawData",JSON.stringify(rawData));
   if (view.data.jsonClass != "DataEmbedded"){
-  var data1=arrToHex(rawData,f,view);}
-   
-   
+  
+  }
+
     if (view.data.jsonClass === "DataEmbedded"){
   var data2=[{"Item_PK":1,"Description":"Watermelon","ColorBasis":259,
   "ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],
   "content#1":2000,"level#1":"Thailand"},{"Item_PK":2,"Description":"Apple","ColorBasis":375,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":25000,"level#1":"Thailand"},{"Item_PK":3,"Description":"Onion","ColorBasis":894,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":10500,"level#1":"Malaysia"},{"Item_PK":4,"Description":"Carrot","ColorBasis":417,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":20410,"level#1":"Malaysia"},{"Item_PK":5,"Description":"Pear","ColorBasis":657,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":6800,"level#1":"Malaysia"},{"Item_PK":6,"Description":"Keyboard","ColorBasis":517,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":7800,"level#1":"Japan"},{"Item_PK":7,"Description":"Mouse","ColorBasis":789,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":1800,"level#1":"Japan"},{"Item_PK":8,"Description":"Desktop","ColorBasis":841,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":3570,"level#1":"USA"},{"Item_PK":9,"Description":"Laptop","ColorBasis":985,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":15000,"level#1":"USA"},{"Item_PK":10,"Description":"Tablet","ColorBasis":657,"ContentInfo":[{"id":"Size","columnName":"Size"}],"LevelInfo":[{"id":"1","columnName":"Category"}],"content#1":18000,"level#1":"USA"}];
-  }else var data2 =hexToModel(data1);
+  }else { 
+   var rawData= ${data};
+   var extendedArr=extendArr(rawData,f,view);
+  var data1=arrToHex(extendedArr,f,view);
+  
+  var data2 =hexToModel(data1);
+  
+  }
   console.log('data2',JSON.stringify(data2));
  
 	selectBoxFn(data2[0].ContentInfo); // append selectBox
@@ -1204,6 +1210,45 @@ console.log("groupResult",JSON.stringify(groupResult));
     })
     return globalArr;
 
+};
+
+ extendArr=function(data,f,view) { //used when you want to use the same columns in operables
+//obtain uniq columnNames
+var colNameMap={};
+var uniqColName=[];
+var fieldsArr=getArr(f,'name',view);
+var n=0;  //n is the index of unextended Arr
+for(var i=0;i< _.size(fieldsArr);i++){
+var colAsProperty =fieldsArr[i];
+
+//Obtaining colNameMap
+if (_.size(uniqColName)==0) {
+uniqColName.push(colAsProperty);
+colNameMap[colAsProperty]=i;
+n=n+1;
+} else {
+	var colAsPropertyArr=[colAsProperty];
+	var intersectArr=_.intersection(colAsPropertyArr,uniqColName);
+	if (_.size(intersectArr)==0){
+		uniqColName.push(colAsProperty);
+		colNameMap[colAsProperty]=i;
+		n=n+1;
+		}
+	}
+}
+
+//using colNameMap to extendArr
+var extendedArr=[];
+_.each(data ,function(k,l){
+//eg of k:[asd,34,34]
+var localArr=[];
+	_.each(fieldsArr,function(o,p){
+	var indexToChoose=colNameMap[o];
+	localArr.push(k[indexToChoose]);
+	});
+	extendedArr.push(localArr);
+});
+return extendedArr;
 };
   getArr=function(obj, k, view) { //used on view.typeinfo to get an array of property value of the propertyName 'name'
     var objects = [];
