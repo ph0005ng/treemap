@@ -249,7 +249,7 @@ function treeMapChart() {
                         .selectAll(".foreignObject .labelbody div svg .label")
                         .style("fill", function(d) {
 					        return idealTextColor(color(d.ColorBasis));
-                        }).style({'font-size':'20px','x':'20px'})
+                        }).style({'font-size':'15px','x':'20px'})
 						.selectAll("tspan").attr("x",'20').attr("dy",'20');
 
                     if (window.isIE) {
@@ -374,7 +374,7 @@ JsonProcess= function(treemap,treeChart,height,width,headerHeight,headerColor,co
 				.append("div")
 				.attr("class", "tooltip_"+viewId)
 				.style("font", "Arial black;")
-				.style("font-size", "11px")
+				.style("font-size", "15px")
 				.style("margin", "8px")
 				.style("padding", "5px")
 				.style("border", "1px solid #000")
